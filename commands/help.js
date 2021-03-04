@@ -26,7 +26,7 @@ const client = new Client()
                 { name: ':large_blue_diamond: What is Radial Bot', value: "Radial Bot is a all in one moderation / fun bot.", },
                 { name: ':large_blue_diamond: Prefix of Radial Bot : `!`', value: `version : \`${version}\``, },
                 { name: '\n\u200b \n__Rdial Bot Commands List__ ', value: '\u200b' },
-                { name: `<:dex:810247280987996312> MangaDex Commands`, value: '`!help mangadex` or `!help md`', inline: true },
+                { name: `Image Commands`, value: '`!help image` or `!help img`', inline: true },
 
                 { name: '\u200b', value: '\u200b' },
             )
@@ -64,10 +64,10 @@ const client = new Client()
             .setColor(botcolo2)
             .addFields(
 
-                { name: 'Gay Rate', value: 'Displays how gay an user is \n:small_orange_diamond: Usage : `!howgay <tag a user (optional)>`' },
+               // { name: 'Gay Rate', value: 'Displays how gay an user is \n:small_orange_diamond: Usage : `!howgay <tag a user (optional)>`' },
                 { name: 'Waifu Rate', value: 'Shows the waifu percent of an user \n:small_orange_diamond: Usage : `!waifurate <tag a user (optional)>`' },
-                { name: 'Thot Rate', value: 'Shows the thotiness of an user \n:small_orange_diamond: Usage : `!thotrate <tag a user (optional)`' },
-                { name: 'Shipping', value: 'Displays the percent of success between user pairings *totally accurate* \n:small_orange_diamond: Usage: `!ship <tag a user>`' },
+               //{ name: 'Thot Rate', value: 'Shows the thotiness of an user \n:small_orange_diamond: Usage : `!thotrate <tag a user (optional)`' },
+               // { name: 'Shipping', value: 'Displays the percent of success between user pairings *totally accurate* \n:small_orange_diamond: Usage: `!ship <tag a user>`' },
                 { name: 'Av / Avatar', value: 'Displays the avatar of an user \n:small_orange_diamond: Usage : `!av <tag a user (optional)>`' },
             )
 
@@ -87,9 +87,18 @@ const client = new Client()
                 { name: 'Ping Calculator', value: 'Displays the ping of the user and the bot \n:small_orange_diamond: Usage : `!ping`' },
                 { name: 'User Info', value: 'Displays information regarding a specific user in a guild \n:small_orange_diamond: Usage : `!userinfo <tag a user (optional)>`' },
                 { name: 'Server Info', value: 'Displays information regarding the guild in which the command was used \n:small_orange_diamond: Usage : `!serverinfo`' },
-                { name: 'Support', value: 'DM\'s the user an invite to the official Radial bot support server \n:small_orange_diamond: Usage : `!support`' },
-                { name: `ID`, value: 'Sends the Discord ID of an specified user \n:small_orange_diamond: Usage : `!id <tag a user (optional)>`' }
+                /*{ name: 'Support', value: 'DM\'s the user an invite to the official Radial bot support server \n:small_orange_diamond: Usage : `!support`' },
+                { name: `ID`, value: 'Sends the Discord ID of an specified user \n:small_orange_diamond: Usage : `!id <tag a user (optional)>`' }*/
             )
+
+        const imagemebed = new Discord.MessageEmbed()
+        .setTitle('Image Commands')
+        .setColor(botcolo2)
+        .addFields(
+            {name: 'Random Anime Images' , value: 'Displays random anime images \n:small_orange_diamond: Usage : `!anime` or `!waifu`'},
+            {name: 'Random Dog Images' , value: 'Sends random images of cute dogs \n:small_orange_diamond: Usage : `!dog`'},
+            {name: 'Random Cat Images' , value: 'Shows images of random fluffy cats \n:small_orange_diamond: Usage : `!cat`'},
+        )
 
         /*if (!args[1]) {
             return message.author.send(load).then( msg => {
@@ -147,8 +156,8 @@ if(message.guild){
                    }
             
 
-                if ((args[1].toLowerCase() === 'mangadex') || (args[1].toLowerCase() === 'md')) {
-                    return message.author.send(mdembed).catch(err => message.channel.send(`<@${message.author.id}>` , errembed)).catch(err => console.log('Missing permission'));
+                if ((args[1].toLowerCase() === 'image') || (args[1].toLowerCase() === 'img')) {
+                    return message.author.send(imagemebed).catch(err => message.channel.send(`<@${message.author.id}>` , errembed)).catch(err => console.log('Missing permission'));
                 }
 
             } else if(collected.first().content.toLowerCase() === 'channel' || collected.first().content.toLowerCase() === 'ch') {
@@ -197,7 +206,7 @@ if(message.guild){
             
                     },
                     
-                    {
+                    /*{
                         name: 'page1',
                         content: new MessageEmbed({
                             title: '<:dex:810247280987996312> MangaDex Commands',
@@ -212,6 +221,27 @@ if(message.guild){
                                 text: '| All these commands works in DMs itself! |',
                                 iconURL: 'https://cdn.discordapp.com/attachments/793195039731482648/793533247967461416/ej1.png'
                             }
+                        }),
+                        reactions: {
+                            '◀️': 'main',
+                            '🗑️': 'delete',
+                        }
+                    }*/
+                    {
+                        name: 'page1',
+                        content: new MessageEmbed({
+                            title: 'Image Commands',
+                            color: botcolo2,
+                            fields: [
+                                {name: 'Random Anime Images' , value: 'Displays random anime images \n:small_orange_diamond: Usage : `!anime` or `!waifu`'},
+            {name: 'Random Dog Images' , value: 'Sends random images of cute dogs \n:small_orange_diamond: Usage : `!dog`'},
+            {name: 'Random Cat Images' , value: 'Shows images of random fluffy cats \n:small_orange_diamond: Usage : `!cat`'},
+                            ],
+                            footer: {
+                                text: '| All these commands works in DMs itself! |',
+                                iconURL: 'https://cdn.discordapp.com/attachments/793195039731482648/793533247967461416/ej1.png'
+                            }
+
                         }),
                         reactions: {
                             '◀️': 'main',
@@ -250,12 +280,12 @@ if(!message.guild){
     if (!args[1]) {
         return message.channel.send(embed)
     }
-    if ((args[1].toLowerCase() === 'fairy') || (args[1].toLowerCase() === 'ft') || (args[1].toLowerCase() === 'fairy' && args[2].toLowerCase() === 'tail')) {
+    /*if ((args[1].toLowerCase() === 'fairy') || (args[1].toLowerCase() === 'ft') || (args[1].toLowerCase() === 'fairy' && args[2].toLowerCase() === 'tail')) {
         return message.channel.send(fairyembed).catch(err => message.reply(errembed)).catch(err => console.log('Missing permission'));
-    }
+    }*/
 
-    if ((args[1].toLowerCase() === 'mangadex') || (args[1].toLowerCase() === 'md')) {
-        return message.channel.send(mdembed).catch(err => message.reply(errembed)).catch(err => console.log('Missing permission'));
+    if ((args[1].toLowerCase() === 'image') || (args[1].toLowerCase() === 'img')) {
+        return message.channel.send(imagemebed).catch(err => message.reply(errembed)).catch(err => console.log('Missing permission'));
     }
 
 }
