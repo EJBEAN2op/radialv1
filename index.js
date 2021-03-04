@@ -16,11 +16,14 @@ for (const file of commandFiles) {
 
 
 bot.on('ready' , async () => {
+    bot.user.setActivity(`${bot.users.cache.size} users | ${bot.guilds.cache.size} servers`, {type: 'WATCHING'})
     console.log('bot is on ggs')
     mongoose.connect('mongodb+srv://radialbot:EpsP9psAC0ybratm@radial.rganw.mongodb.net/Radial?retryWrites=true&w=majority' , {
         useNewUrlParser: true,
         useUnifiedTopology: true,
         useFindAndModify: false,
+    }).then(() => {
+        console.log('Connected to mongo')
     })
 })
 
@@ -71,9 +74,9 @@ bot.on('message', async (message) => {
       
       const guildprefix = args[1]
 
-      if(args[1].length > 3) return message.channel.send(new Discord.MessageEmbed()
+      if(args[1].length > 1) return message.channel.send(new Discord.MessageEmbed()
       .setColor('RED')
-      .setDescription('**<:exclala:812387008365985804> Prefix cannot be longer than 3 characters**'));
+      .setDescription('**<:exclala:812387008365985804> Prefix cannot be longer than 1 character**'));
 
       if (data) {
           await welcomeSchema.findOneAndRemove({
@@ -84,7 +87,7 @@ bot.on('message', async (message) => {
 
           message.channel.send(new Discord.MessageEmbed()
           .setDescription(`**<a:gears:811685880250368040> Successfully set server prefix to \`${guildprefix}\`**`)
-          .setFooter(`If you ever forget the prefix , simply ping the bot !`));
+          .setFooter(`If you ever forget the prefix , simply type preifx in the chat!`));
     
           let newData = new welcomeSchema({
               Prefix: guildprefix,
@@ -94,7 +97,7 @@ bot.on('message', async (message) => {
       } else if (!data) {
           message.channel.send(new Discord.MessageEmbed()
           .setDescription(`**<a:gears:811685880250368040> Successfully set server prefix to \`${guildprefix}\`**`)
-          .setFooter(`If you ever forget the prefix , simply ping the bot!`));
+          .setFooter(`If you ever forget the prefix , simply type prefix in the chat`));
     
           let newData = new welcomeSchema({
               Prefix: guildprefix,
