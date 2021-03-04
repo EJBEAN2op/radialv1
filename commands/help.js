@@ -18,7 +18,7 @@ const client = new Client()
         const embed = new Discord.MessageEmbed()
 
             .setColor(botcolo2)
-            .setDescription(`[Support Server](https://discord.gg/dBggm8KpsU) | [Fairy Tail Discord](https://discord.gg/fairytail)`)
+            .setDescription(`[Support Server](https://discord.gg/dBggm8KpsU)`)
             .setAuthor('Radial Bot help')//, 'https://discord.com/oauth2/authorize?client_id=770365212704243784&scope=bot&permissions=117760')
 
             .addFields(
