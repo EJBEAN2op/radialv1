@@ -123,7 +123,7 @@ const commandname = args[0].toLowerCase();
     const command = bot.commands.get(commandname) || bot.commands.find(cmd => cmd.aliases && cmd.aliases.includes(commandname));
     if (!command) return;
     try {
-        command.execute(message, args, Discord , bot)//, bot, botcolor, botcolo2);
+        command.execute(message, args, Discord , bot , prefix)//, bot, botcolor, botcolo2);
         //                                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ variables    
     } catch (error) {
         console.log(error);
