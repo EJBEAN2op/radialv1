@@ -1,4 +1,4 @@
-module.exports = {
+/*module.exports = {
     name: 'anime',
     aliases: ['waifu'],
     execute: async (message , args , Discord) => {
@@ -14,4 +14,4 @@ module.exports = {
 
         message.channel.send(embed).catch(err => console.log(err));
     }
-}
+}*/
