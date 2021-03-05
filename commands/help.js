@@ -95,7 +95,7 @@ const client = new Client()
         .setTitle('Image Commands')
         .setColor(botcolo2)
         .addFields(
-            {name: 'Random Anime Images' , value: 'Displays random anime images \n:small_orange_diamond: Usage : `!anime` or `!waifu`'},
+           // {name: 'Random Anime Images' , value: 'Displays random anime images \n:small_orange_diamond: Usage : `!anime` or `!waifu`'},
             {name: 'Random Dog Images' , value: 'Sends random images of cute dogs \n:small_orange_diamond: Usage : `!dog`'},
             {name: 'Random Cat Images' , value: 'Shows images of random fluffy cats \n:small_orange_diamond: Usage : `!cat`'},
         )
@@ -137,7 +137,7 @@ const client = new Client()
         })*/
 
 if(message.guild){
-    const answer = ['yes' , 'y' , 'ye'];
+
 
     message.channel.send(new Discord.MessageEmbed()
     .setTitle(`<a:boing:815180305190223903> awaiting user response`)
@@ -233,7 +233,7 @@ if(message.guild){
                             title: 'Image Commands',
                             color: botcolo2,
                             fields: [
-                                {name: 'Random Anime Images' , value: 'Displays random anime images \n:small_orange_diamond: Usage : `!anime` or `!waifu`'},
+                                //{name: 'Random Anime Images' , value: 'Displays random anime images \n:small_orange_diamond: Usage : `!anime` or `!waifu`'},
             {name: 'Random Dog Images' , value: 'Sends random images of cute dogs \n:small_orange_diamond: Usage : `!dog`'},
             {name: 'Random Cat Images' , value: 'Shows images of random fluffy cats \n:small_orange_diamond: Usage : `!cat`'},
                             ],
@@ -273,19 +273,19 @@ if(message.guild){
         
         
         
-    })
+    }).catch(e => console.log(e))
 }
 
 if(!message.guild){
     if (!args[1]) {
-        return message.channel.send(embed)
+        return message.channel.send(embed).catch(e => console.log(e))
     }
     /*if ((args[1].toLowerCase() === 'fairy') || (args[1].toLowerCase() === 'ft') || (args[1].toLowerCase() === 'fairy' && args[2].toLowerCase() === 'tail')) {
         return message.channel.send(fairyembed).catch(err => message.reply(errembed)).catch(err => console.log('Missing permission'));
     }*/
 
     if ((args[1].toLowerCase() === 'image') || (args[1].toLowerCase() === 'img')) {
-        return message.channel.send(imagemebed).catch(err => message.reply(errembed)).catch(err => console.log('Missing permission'));
+        return message.channel.send(imagemebed).catch(e => console.log(e));
     }
 
 }
