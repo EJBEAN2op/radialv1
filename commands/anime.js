@@ -1,7 +1,8 @@
-/*module.exports = {
+module.exports = {
     name: 'anime',
     aliases: ['waifu'],
     execute: async (message , args , Discord) => {
+        if(message.guild.id !== '802857839488008203') return;
         const randomanime = require('random-anime');
         const anime = randomanime.anime();
         if(!message.guild) return;
@@ -14,4 +15,4 @@
 
         message.channel.send(embed).catch(err => console.log(err));
     }
-}*/
+}
