@@ -85,11 +85,12 @@ const client = new Client()
             .setColor(botcolo2)
             .addFields(
                 { name: 'Ping Calculator', value: 'Displays the ping of the user and the bot \n:small_orange_diamond: Usage : `!ping`' },
-                { name: 'User Info', value: 'Displays information regarding a specific user in a guild \n:small_orange_diamond: Usage : `!userinfo <tag a user (optional)>`' },
+                { name: 'User Info', value: 'Displays information regarding a specific user in a guild \n:small_orange_diamond: Usage : `!userinfo <tag a user>`' },
                 { name: 'Server Info', value: 'Displays information regarding the guild in which the command was used \n:small_orange_diamond: Usage : `!serverinfo`' },
                 /*{ name: 'Support', value: 'DM\'s the user an invite to the official Radial bot support server \n:small_orange_diamond: Usage : `!support`' },
                 { name: `ID`, value: 'Sends the Discord ID of an specified user \n:small_orange_diamond: Usage : `!id <tag a user (optional)>`' }*/
             )
+            .setFooter('Syntax guide : `< >` optional')
 
         const imagemebed = new Discord.MessageEmbed()
         .setTitle('Image Commands')
@@ -159,6 +160,9 @@ if(message.guild){
                 if ((args[1].toLowerCase() === 'image') || (args[1].toLowerCase() === 'img')) {
                     return message.author.send(imagemebed).catch(err => message.channel.send(`<@${message.author.id}>` , errembed)).catch(err => console.log('Missing permission'));
                 }
+                if(args[1].toLowerCase() === 'utility'){
+                    return message.author.send(utilembed)
+                }
 
             } else if(collected.first().content.toLowerCase() === 'channel' || collected.first().content.toLowerCase() === 'ch') {
                 msg.delete()
@@ -171,7 +175,7 @@ if(message.guild){
                             author: {
                                 name: 'Radial Bot Help',
                             }, 
-                            description: `[Support Server](https://discord.gg/dBggm8KpsU)`,
+                            description: `[Support Server](https://discord.gg/dBggm8KpsU) | [Invite URL](https://discord.com/oauth2/authorize?client_id=770365212704243784&scope=bot&permissions=101440)`,
                             fields: [
                             {
                 
@@ -206,29 +210,31 @@ if(message.guild){
             
                     },
                     
-                    /*{
+                    {
                         name: 'page1',
                         content: new MessageEmbed({
-                            title: '<:dex:810247280987996312> MangaDex Commands',
+                            title: ':tools: Utility',
                             color: botcolo2,
                             fields: [
-                                { name: 'Manga Search', value: 'Search and get information regarding your favorite manga , provided with useful links to start reading on the go! \n:small_orange_diamond: Usage : `!md <An existing manga title>`' },
-                            { name: 'MangaDex User Search', value: 'Search for any registered MangaDex user accounts. \n:small_orange_diamond: Usage : `!md.user <username>`' },
-                            { name: `Top Rated Mangas`, value: 'Displays the list of top 10 most rated mangas of all time \n:small_orange_diamond: Usage : `!md.top`' }
+                                { name: 'Ping Calculator', value: 'Displays the ping of the user and the bot \n:small_orange_diamond: Usage : `!ping`' },
+                                { name: 'User Info', value: 'Displays information regarding a specific user in a guild \n:small_orange_diamond: Usage : `!userinfo <tag a user>`' },
+                                { name: 'Server Info', value: 'Displays information regarding the guild in which the command was used \n:small_orange_diamond: Usage : `!serverinfo`' },
+                                {name:'\u200b' , value: '`< >` are not needed when using the command'}
                         
                             ],
                             footer: {
-                                text: '| All these commands works in DMs itself! |',
+                                text: '| Developed by EwasTaken |',
                                 iconURL: 'https://cdn.discordapp.com/attachments/793195039731482648/793533247967461416/ej1.png'
                             }
                         }),
                         reactions: {
                             '◀️': 'main',
+                            '▶️': 'page2',
                             '🗑️': 'delete',
                         }
-                    }*/
+                    },
                     {
-                        name: 'page1',
+                        name: 'page2',
                         content: new MessageEmbed({
                             title: 'Image Commands',
                             color: botcolo2,
@@ -238,13 +244,13 @@ if(message.guild){
             {name: 'Random Cat Images' , value: 'Shows images of random fluffy cats \n:small_orange_diamond: Usage : `!cat`'},
                             ],
                             footer: {
-                                text: '| All these commands works in DMs itself! |',
+                                text: '| Developed by EwasTaken |',
                                 iconURL: 'https://cdn.discordapp.com/attachments/793195039731482648/793533247967461416/ej1.png'
                             }
 
                         }),
                         reactions: {
-                            '◀️': 'main',
+                            '◀️': 'page1',
                             '🗑️': 'delete',
                         }
                     }
