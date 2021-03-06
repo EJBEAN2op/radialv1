@@ -2,6 +2,7 @@ const {
     info
 } = require('console');
 const Discord = require('discord.js');
+const PREFIX = '!';
 const bot = new Discord.Client({
     disableMentions: 'everyone'
 });
@@ -40,12 +41,34 @@ bot.on('ready', async () => {
     })
 })
 
+let maintanence = false;
+bot.on('message' , async message => {
+    const args = message.content.substring(PREFIX.length).split(" ");
+    const cmd = args[0].toLowerCase()
+    switch(cmd){
+        case 'maintenance':
+            if(message.author.id !== '429493473259814923') return;
+            if(!args[1]) return;
+            /*if(args[1] === 'off'){
+                maintanence = false
+            }*/
+            if(args[1] === 'on') {
+                maintanence = true
+            } else {
+                maintanence = false
+            }
+            message.channel.send(`maintenance mode ${maintanence ? 'enabled':'disabled'}`)
+            break;
+    }
+})
+
 
 let prefix;
 const welcomeSchema = require('./prefix-schema')
 
 
 bot.on('message', async (message) => {
+
     if (message.guild) {
         const data = await welcomeSchema.findOne({
             GuildID: message.guild.id
@@ -152,16 +175,20 @@ bot.on('message', async (message) => {
 
 	timestamps.set(message.author.id, now);
     setTimeout(() => timestamps.delete(message.author.id), cooldownAmount);
-    
+    if(maintanence === false){
     try {
         command.execute(message, args, Discord, bot, prefix)
     } catch (error) {
         console.log(error);
     }
-
+    } else {
+     message.channel.send(new Discord.MessageEmbed()
+     .setDescription('```diff\n- The bot commands are disabled for maintenance , please try again later``` \nTrack bot status here => [Click Here](https://discord.gg/Md3bseUhde)')).catch(e => console.log(e))
+        return;
+    }
 })
 
-const PREFIX = '!';
+
 bot.on('message', async message => {
     const args = message.content.substring(PREFIX.length).split(" ");
     const funcommandname = args[0].toLowerCase();
@@ -245,7 +272,7 @@ bot.on('message' , async message => {
         return;
     }
 })
- 
+
 
 
 bot.login(process.env.TOKEN)
