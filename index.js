@@ -116,6 +116,12 @@ bot.on('message', async (message) => {
         }
     }
 
+    const sademotes = [
+        '<:pepehands:817086292449034300>',
+        '<:notlikemiyu:805359713591230524>',
+        '<:pain:815180427257970689>'
+    ]
+    const sademoteresult = Math.floor(Math.random() * 3)
 
     if (!message.guild) prefix = '!';
     const args = message.content.substring(prefix.length).split(" ");
@@ -140,7 +146,7 @@ bot.on('message', async (message) => {
 
 		if (now < expirationTime) {
 			const timeLeft = (expirationTime - now) / 1000;
-			return message.reply(`please wait ${timeLeft.toFixed(1)} more second(s) before reusing the \`${command.name}\` command.`);
+			return message.reply(`please wait ${timeLeft.toFixed(1)} more second(s) before reusing the \`${command.name}\` command. ${sademotes[sademoteresult]}`);
 		}
 	}
 
