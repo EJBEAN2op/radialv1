@@ -1,5 +1,6 @@
 module.exports = {
     name: 'cat',
+    cooldown: 20,
     execute: async (message, args, Discord) => {
         if (!message.guild) return;
         if (args.length > 1) return;
