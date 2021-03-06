@@ -2,9 +2,10 @@ module.exports = {
     name: 'purge',
     aliases: ['clear'],
     execute: async (message, args, Discord, bot) => {
+        if (!message.guild) return;
         if (!message.member.hasPermission('MANAGE_MESSAGES')) return;
         if (!message.guild.me.hasPermission('MANAGE_MESSAGES')) return;
-        if (!message.guild) return;
+        
         if (parseInt(args[1]) > 100) return message.channel.send(`You cannot delete more than 100 messages in one go <:pepehands:817086292449034300>`)
         const num1 = +args[1]
         const num2 = 1
