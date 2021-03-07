@@ -68,6 +68,7 @@ const welcomeSchema = require('./prefix-schema')
 
 
 bot.on('message', async (message) => {
+    if(message.author.bot) return;
 
     if (message.guild) {
         const data = await welcomeSchema.findOne({
@@ -195,7 +196,7 @@ bot.on('message', async message => {
     //          PERMISSIONS         //
     if (message.author.bot) return;
 
-
+    
 
     switch (funcommandname) {
         case 'suggest':
@@ -271,6 +272,8 @@ bot.on('message' , async message => {
     } else {
         return;
     }
+
+
 })
 
 
