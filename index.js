@@ -198,7 +198,7 @@ bot.on('message', async message => {
 
     
 
-    switch (funcommandname) {
+    switch (message.content.toLowerCase()) {
         case 'suggest':
             if (!message.guild) {
                 const guild = await bot.guilds.cache.get(serverID) || await bot.guilds.fetch(serverID).catch(m => {})
