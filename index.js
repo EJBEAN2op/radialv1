@@ -224,7 +224,7 @@ bot.on('message', async message => {
                                         .then(collected => {
                                             main.send(new Discord.MessageEmbed()
                                                 .setAuthor(`${collected.first().author.username} (${collected.first().author.id})`, collected.first().author.displayAvatarURL())
-                                                .setDescription(collected.first().content))
+                                                .setDescription(`\`\`\`diff\n+ ${collected.first().content}\`\`\``))
 
 
                                             x.channel.send(suggestionEmbed.embed2).catch(e => console.log(e))
@@ -233,11 +233,13 @@ bot.on('message', async message => {
                             } else if (collected.first().content.toLowerCase() === 'no' || collected.first().content.toLowerCase() === 'exit') {
                                 message.channel.send('exiting ...').then(x => {
                                     x.delete()
-                                    x.channel.send('exited').catch(e => console.log(e))
+                                    x.channel.send(new Discord.MessageEmbed()
+                                    .setDescription('```diff\n- User aborted the request```')).catch(e => console.log(e))
                                 }).catch(e => console.log(e))
 
                             } else {
-                                message.channel.send('Unknown response - process exited').catch(e => console.log(e))
+                                message.channel.send(new Discord.MessageEmbed()
+                                .setDescription('```diff\n- Unknown Response - process exited```')).catch(e => console.log(e))
                             }
                         }).catch(e => console.log(e))
 
@@ -247,7 +249,9 @@ bot.on('message', async message => {
 
 
             } else {
-                message.channel.send('This command is only available in DMs , please dm me `!suggest` !').catch(e => console.log(e))
+                message.channel.send(new Discord.MessageEmbed()
+                .setDescription('```diff\n- This command is only available in DMs , please DM the bot [suggest] !```')
+                .setFooter('Pro tip `[]` are not required!')).catch(e => console.log(e))
             }
             break;
     }
