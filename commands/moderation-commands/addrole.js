@@ -7,7 +7,9 @@ module.exports = {
         if (!message.member.hasPermission('MANAGE_ROLES')) return;
         if (!message.guild.me.hasPermission('MANAGE_ROLES')) return message.channel.send(new Discord.MessageEmbed()
             .setDescription('```diff\n- Error : Missing bot permission\n+ Permission Required : Manage Roles```')).catch(console.error);
-        if (!args[1]) return message.channel.send('please provide a valid user')
+        if (!args[1]) return message.channel.send(new Discord.MessageEmbed()
+        .setDescription('```diff\n- Error : Missing arguments , please provide a valid user\n+ Usage : !role [user ID / mention] [role ID / mention]```')
+        .setFooter(`Make sure to use server prefix instead of <!>`))
         const rolename = args[2];
         const target = message.guild.roles.cache.find(x => x.id === rolename) ||
             message.mentions.roles.first() ||
