@@ -6,7 +6,7 @@ module.exports = {
         if (!message.guild.me.hasPermission('BAN_MEMBERS')) return message.channel.send(new Discord.MessageEmbed()
             .setDescription('```diff\n- Error : Missing bot permission\n+ Permission Required : Ban Members```')).catch(console.error);
         if (!args[1]) return message.channel.send(new Discord.MessageEmbed()
-            .setDescription('```diff\n- Error : missing arguments , please provide a user\n+ Usage : !ban [user id / mention]```')).catch(console.error)
+            .setDescription('```diff\n- Error : missing arguments , please provide a user\n+ Usage : !ban [user id / mention] [Reason(optional)]```')).catch(console.error)
         const target = message.guild.members.fetch(args[1].replace(/\D/g, ''));
         if (args[1].includes(message.author.id)) return message.channel.send('```diff\n- Error : you can\'t ban yourself```').catch(console.error)
         target.then(user => {
