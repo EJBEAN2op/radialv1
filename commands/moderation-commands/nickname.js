@@ -15,16 +15,14 @@ module.exports = {
 
             if (args[2]) {
                 const reason = args.splice(2).join(" ");
-                user.send(new Discord.MessageEmbed()
-                    .setDescription(`\`\`\`diff\n+ You were banned in ${message.guild.name} \n+ Reason : ${reason}\`\`\``)).catch(console.error)
                 user.setNickname(`${reason}`).catch(e => console.log(e));
                 message.channel.send(new Discord.MessageEmbed()
                     .setDescription(`\`\`\`diff\n+ Set nickname of ${user.user.tag} to ${reason}\`\`\``)).catch(e => console.log(e));
             } else {
                 message.channel.send(new Discord.MessageEmbed()
-                    .setDescription(`\`\`\`diff\n- Error : missing arguments , please provide a nickname`)).catch(e => console.log(e));
+                    .setDescription(`\`\`\`diff\n- Error : missing arguments , please provide a nickname\`\`\``)).catch(e => console.log(e));
             }
         }).catch(e => message.channel.send(new Discord.MessageEmbed()
-            .setDescription('```diff\n- Error : Unknown user(ID)```'))).catch(console.error)
+            .setDescription('```diff\n- Error : Unknown user / ID```'))).catch(console.error)
     }
 }

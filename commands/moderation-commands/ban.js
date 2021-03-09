@@ -30,6 +30,6 @@ module.exports = {
                     .setDescription(`\`\`\`diff\n+ Banned user : ${user.user.tag} \n- Reason : Not provided`)).catch(e => console.log(e));
             }
         }).catch(e => message.channel.send(new Discord.MessageEmbed()
-            .setDescription('```diff\n- Error : Unknown user(ID)```'))).catch(console.error)
+            .setDescription('```diff\n- Error : Unknown user / ID```'))).catch(console.error)
     }
 }
