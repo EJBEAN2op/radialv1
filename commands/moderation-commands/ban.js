@@ -8,7 +8,7 @@ module.exports = {
         if (!args[1]) return message.channel.send(new Discord.MessageEmbed()
             .setDescription('```diff\n- Error : missing arguments , please provide a user\n+ Usage : !ban [user id / mention]```')).catch(console.error)
         const target = message.guild.members.fetch(args[1].replace(/\D/g, ''));
-        if (args[1].includes(message.author.id)) return message.channel.send('```diff\n- Error : you can\'t ban yourself').catch(console.error)
+        if (args[1].includes(message.author.id)) return message.channel.send('```diff\n- Error : you can\'t ban yourself```').catch(console.error)
         target.then(user => {
             if (user.roles.highest.position >= message.guild.me.roles.highest.position) return message.channel.send(new Discord.MessageEmbed()
                 .setDescription(`\`\`\`diff\n- Error : ${user.user.username}'s role is higher than bot's role\`\`\``)).catch(console.error);
