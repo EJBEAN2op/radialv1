@@ -8,7 +8,7 @@ module.exports = {
 
 
         if (args[2]) {
-            const reason = args.splice(2).join(" ")
+            const reason = args.splice(1).join(" ")
             message.channel.updateOverwrite(message.channel.guild.roles.everyone, {
                 SEND_MESSAGES: false
             }).catch(console.error)
