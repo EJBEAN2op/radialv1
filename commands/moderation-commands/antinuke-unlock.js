@@ -10,7 +10,7 @@ module.exports = {
             }).catch(console.error)
         })
         message.channel.send(new Discord.MessageEmbed()
-            .setDescription(`\`\`\`diff\n+ Locked ${message.channel.name}\`\`\``)
-            .setFooter('Use lock for a complete server lockdown')).cache(console.error)
+            .setDescription(`\`\`\`diff\n+ Unlocked all channels\`\`\``)
+            .setFooter('Use lock for a complete server lockdown')).catch(console.error)
     }
 }

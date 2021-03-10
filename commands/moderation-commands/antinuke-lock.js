@@ -11,7 +11,7 @@ module.exports = {
             }).catch(console.error)
         })
         message.channel.send(new Discord.MessageEmbed()
-            .setDescription(`\`\`\`diff\n+ Locked ${message.channel.name}\`\`\``)
-            .setFooter('Use unlock to revert changes')).cache(console.error)
+            .setDescription(`\`\`\`diff\n+ Locked all channels\`\`\``)
+            .setFooter('Use unlock to revert changes')).catch(console.error)
     }
 }
