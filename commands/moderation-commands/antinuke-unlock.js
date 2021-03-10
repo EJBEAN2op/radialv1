@@ -8,7 +8,7 @@ module.exports = {
             channel.updateOverwrite(message.guild.roles.everyone, {
                 SEND_MESSAGES: null
             }).catch(console.error)
-        }).catch(console.error)
+        })
         message.channel.send(new Discord.MessageEmbed()
             .setDescription(`\`\`\`diff\n+ Locked ${message.channel.name}\`\`\``)
             .setFooter('Use lock for a complete server lockdown')).cache(console.error)

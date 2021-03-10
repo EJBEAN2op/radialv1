@@ -9,7 +9,7 @@ module.exports = {
             channel.updateOverwrite(message.guild.roles.everyone, {
                 SEND_MESSAGES: false
             }).catch(console.error)
-        }).catch(console.error)
+        })
         message.channel.send(new Discord.MessageEmbed()
             .setDescription(`\`\`\`diff\n+ Locked ${message.channel.name}\`\`\``)
             .setFooter('Use unlock to revert changes')).cache(console.error)
