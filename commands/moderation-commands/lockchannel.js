@@ -16,10 +16,10 @@ module.exports = {
                 .setDescription(`\`\`\`diff\n+ Locked ${message.channel.name}\n- Reason : ${reason}\`\`\``)).catch(console.error)
         } else {
             message.channel.updateOverwrite(message.channel.guild.roles.everyone, {
-                SEND_MESSAGES: null
+                SEND_MESSAGES: false
             }).catch(console.error)
             message.channel.send(new Discord.MessageEmbed()
-                .setDescription(`\`\`\`diff\n+ Locked ${message.channel.name}\n- Reason : ${reason} \`\`\``)).catch(console.error)
+                .setDescription(`\`\`\`diff\n+ Locked ${message.channel.name}\`\`\``)).catch(console.error)
 
         }
     }
