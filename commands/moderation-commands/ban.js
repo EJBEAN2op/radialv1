@@ -24,7 +24,7 @@ module.exports = {
                     .setDescription(`\`\`\`diff\n+ Banned user : ${user.user.tag} \n+ Reason : ${reason}\`\`\``)).catch(e => console.log(e));
             } else {
                 user.send(new Discord.MessageEmbed()
-                    .setDescription(`\`\`\`diff\n+ You were banned in ${message.guild.name} \n- Reason : Not provided`))
+                    .setDescription(`\`\`\`diff\n+ You were banned in ${message.guild.name} \n- Reason : Not provided\`\`\``))
                 user.ban().catch(e => console.log(e));
                 message.channel.send(new Discord.MessageEmbed()
                     .setDescription(`\`\`\`diff\n+ Banned user : ${user.user.tag} \n- Reason : Not provided\`\`\``)).catch(e => console.log(e));
