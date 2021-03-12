@@ -4,7 +4,7 @@ module.exports = {
     execute: async (message,args,Discord) => {
         const https = require('https');
 const url = 'https://www.reddit.com/r/dankmemes/.json?limit=100'
-        const { meme } = require('memejs')
+
         https.get(url, (result) => {
             var body = ''
             result.on('data', (chunk) => {
