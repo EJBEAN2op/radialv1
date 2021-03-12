@@ -32,8 +32,8 @@ module.exports = {
                 message.channel.send(new Discord.MessageEmbed()
                     .setDescription(`Removed role <@&${target.id}> from <@${member.user.id}>`))
             }
-        }).catch(e => message.channel.send(new Discord.MessageEmbed()
-            .setDescription('```diff\n- Error : Unknown user / ID```'))).catch(console.error)
+        })/*.catch(e => message.channel.send(new Discord.MessageEmbed()
+            .setDescription('```diff\n- Error : Unknown user / ID```'))).catch(console.error)*/
 
     }
 }
