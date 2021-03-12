@@ -116,7 +116,7 @@ bot.on('message', async (message) => {
 
                     message.channel.send(new Discord.MessageEmbed()
                         .setDescription(`**<a:gears:811685880250368040> Successfully set server prefix to \`${guildprefix}\`**`)
-                        .setFooter(`If you ever forget the prefix , simply type preifx in the chat!`));
+                        .setFooter(`If you ever forget the prefix , simply type prefix in the chat!`));
 
                     let newData = new welcomeSchema({
                         Prefix: guildprefix,
