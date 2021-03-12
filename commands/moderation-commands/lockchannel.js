@@ -26,7 +26,8 @@ if(message.channel.permissionsFor(message.channel.guild.roles.everyone).has('SEN
                 .setDescription(`\`\`\`diff\n+ Locked ${message.channel.name}\n- Reason : ${reason}\`\`\``)).catch(console.error)
                 return;
         } else {
-            return message.channel.send('```diff\n- Error : channel is already locked```').catch(console.error)
+            return message.channel.send(new Discord.MessageEmbed()
+            .setDescription('```diff\n- Error : channel is already locked```')).catch(console.error)
         }
     }
 }
