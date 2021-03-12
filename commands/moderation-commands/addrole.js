@@ -22,6 +22,8 @@ module.exports = {
         roleUser.then(member => {
             if (target.position >= message.guild.me.roles.highest.position) return message.channel.send(new Discord.MessageEmbed()
                 .setDescription(`\`\`\`diff\n- Error : The role ${target.name} is higher than bot's role\`\`\``)).catch(console.error);
+            if (target.position >= message.member.roles.highest.position) return message.channel.send(new Discord.MessageEmbed()
+            .setDescription(`\`\`\`diff\n- Error : The role ${target.name} is higher than your role\`\`\``)).catch(console.error);
             if (member.roles.cache.has(target.id)) {
                 message.channel.send(new Discord.MessageEmbed()
                     .setDescription('```diff\n- Error : user already has the role```')).catch(console.error)
