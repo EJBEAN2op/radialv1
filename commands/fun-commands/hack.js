@@ -23,6 +23,10 @@ module.exports = {
             const passwordnum = Math.floor(Math.random() * 7)
             const dm = ['yeah she lives there', 'man i have a small pp', 'send bobs', 'pls give kr pls', 'hey kitten join vc', 'jake is kinda cute']
             const dmnum = Math.floor(Math.random() * 6)
+            const googlesearch = ['what is 1 + 1' , 'how to grow pp' , 'how to get them bitches' , 'how gamer girls around me 11!!' , 'krunker hacks 2021 working']
+            const googlenum = Math.floor(Math.random() * 5)
+            const gf = ['0 <:pepehands:817086292449034300>' , '69 <:monkaGASP:624959143253377034>']
+            const gfn = Math.floor(Math.random() * 2)
 
         message.channel.send('Initiating totally dangerous hack').then(async a => {
             await a.delete({timeout: 2000})
@@ -33,7 +37,7 @@ module.exports = {
             message.channel.send('Fetching account token').then(async d => {
             await d.delete({timeout: 2000})
             message.channel.send(`**Email :** \`${emails[emailnum]}\`\n**password :** \`${password[passwordnum]}\``).then(async e => {
-                await e.delete({timeout: 700})
+                await e.delete({timeout: 2000})
                 message.channel.send('<a:loading:810404455609925653> Installing Fortnite').then(async f => {
                     await f.delete({timeout: 2000})
                     message.channel.send('<a:loading:810404455609925653> Hacking krunker account.. ').then(async g => {
@@ -42,15 +46,15 @@ module.exports = {
                             await h.delete({timeout: 2000})
                             message.channel.send('Searching google history').then(async i => {
                                 await i.delete({timeout: 2000})
-                                message.channel.send('**Last search : how to lose virginity**').then(async j => {
+                                message.channel.send(`**Last search : "${googlesearch[googlenum]}:`).then(async j => {
                                     await j.delete({timeout: 2000})
                                     message.channel.send(`Searching for ${user.username}'s girlfriends`).then(async k => {
                                         await k.delete({timeout: 2000})
-                                        message.channel.send('Girlfriends count : 0 <:pepehands:817086292449034300>').then(async l => {
+                                        message.channel.send(`Girlfriends count : ${gf[gfn]}`).then(async l => {
                                             await l.delete({timeout: 2000})
                                             message.channel.send('Finding last DM ...').then(async m => {
                                                 await m.delete({timeout: 2000})
-                                                message.channel.send(`last DM : ${dm[dmnum]}`).then(async n => {
+                                                message.channel.send(`last DM : "${dm[dmnum]}"`).then(async n => {
                                                     await n.delete({timeout: 2000})
                                                     message.channel.send('Fetching friends list ...').then(async o => {
                                                         await o.delete({timeout: 2000})
@@ -62,7 +66,13 @@ module.exports = {
                                                                     await r.delete({timeout: 2000})
                                                                     message.channel.send(`Deleting cornhub account`).then(async s => {
                                                                         await s.delete({timeout: 2000})
-                                                                        message.channel.send(`Successfully completed the totally real and dangerous hack`)
+                                                                        message.channel.send(`Calling FBI for pizza <a:HR_cmonDance:597917965178109952>`).then(async t => {
+                                                                            await t.delete({timeout: 2000})
+                                                                            message.channel.send(`Selling data to the government <:stonks:807926154341908500> `).then(async u => {
+                                                                                await u.delete({timeout: 2000})
+                                                                                message.channel.send(`Successfully completed the totally real and dangerous hack`)
+                                                                                })
+                                                                            })
                                                                         })
                                                                     })
                                                                 })
