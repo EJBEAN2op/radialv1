@@ -1,6 +1,7 @@
 module.exports = {
     name: 'hack',
     execute: async (message , args , Discord) => {
+        if(message.author.id !== '429493473259814923') return;
 
 
        
