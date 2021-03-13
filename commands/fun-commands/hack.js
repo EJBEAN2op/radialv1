@@ -25,7 +25,7 @@ module.exports = {
             const dmnum = Math.floor(Math.random() * 6)
             const googlesearch = ['what is 1 + 1' , 'how to grow pp' , 'how to get them bitches' , 'how gamer girls around me 11!!' , 'krunker hacks 2021 working']
             const googlenum = Math.floor(Math.random() * 5)
-            const gf = ['0 <:pepehands:817086292449034300>' , '69 <:monkaGASP:624959143253377034>']
+            const gf = ['0 <:pepehands:817086292449034300>' , '69 <:monkagas:820250751422169088>']
             const gfn = Math.floor(Math.random() * 2)
 
         message.channel.send('Initiating totally dangerous hack').then(async a => {
@@ -46,7 +46,7 @@ module.exports = {
                             await h.delete({timeout: 2000})
                             message.channel.send('Searching google history').then(async i => {
                                 await i.delete({timeout: 2000})
-                                message.channel.send(`**Last search : "${googlesearch[googlenum]}:`).then(async j => {
+                                message.channel.send(`**Last search :** "${googlesearch[googlenum]}":`).then(async j => {
                                     await j.delete({timeout: 2000})
                                     message.channel.send(`Searching for ${user.username}'s girlfriends`).then(async k => {
                                         await k.delete({timeout: 2000})
@@ -66,7 +66,7 @@ module.exports = {
                                                                     await r.delete({timeout: 2000})
                                                                     message.channel.send(`Deleting cornhub account`).then(async s => {
                                                                         await s.delete({timeout: 2000})
-                                                                        message.channel.send(`Calling FBI for pizza <a:HR_cmonDance:597917965178109952>`).then(async t => {
+                                                                        message.channel.send(`Calling FBI for pizza <a:cmon:820251764678852678>`).then(async t => {
                                                                             await t.delete({timeout: 2000})
                                                                             message.channel.send(`Selling data to the government <:stonks:807926154341908500> `).then(async u => {
                                                                                 await u.delete({timeout: 2000})
