@@ -1,10 +1,8 @@
-const {
-    link
-} = require("ffmpeg-static")
-
 module.exports = {
     name: 'help',
     execute: async (message, args, Discord) => {
+
+        var helpembed = require('../../embeds/help-embed')
         const errembed = new Discord.MessageEmbed()
             .setColor('RED')
             .setDescription('Hey there, looks like i was not able to DM you , please make sure that your DMs are open :thumbsup:')
@@ -22,87 +20,7 @@ module.exports = {
         const version = '1.1.0'
         const radialpfp = 'https://media.discordapp.net/attachments/813807565837303808/813810050732785695/sw.png'
         const botcolo2 = '#001aff'
-        const embed = new Discord.MessageEmbed()
-
-            .setColor(botcolo2)
-            .setDescription(`[Support Server](https://discord.gg/dBggm8KpsU)`)
-            .setAuthor('Radial Bot help') //, 'https://discord.com/oauth2/authorize?client_id=770365212704243784&scope=bot&permissions=117760')
-
-            .addFields(
-                // { name: '' , value: '', },
-                {
-                    name: ':large_blue_diamond: What is Radial Bot',
-                    value: "Radial Bot is a all in one moderation / fun bot.",
-                }, {
-                    name: ':large_blue_diamond: Prefix of Radial Bot : `!`',
-                    value: `version : \`${version}\``,
-                }, {
-                    name: '\n\u200b \n__Rdial Bot Commands List__ ',
-                    value: '\u200b'
-                }, {
-                    name: `Image Commands`,
-                    value: '`!help image` or `!help img`',
-                    inline: true
-                },
-
-                {
-                    name: '\u200b',
-                    value: '\u200b'
-                },
-            )
-
-            .setTimestamp()
-            .setFooter('Developed by : EwasTaken#3961', 'https://cdn.discordapp.com/attachments/793195039731482648/793533247967461416/ej1.png');
-
-
-        //timeout
-        /*if (message.channel.type !== "dm") {
-            message.reply('Please check your DMs').then(message => {
-                message.delete({
-                    timeout: 3000
-                })
-            });
-        }*/
-
-
-
-        const fairyembed = new Discord.MessageEmbed()
-            .setTitle('<:fairytail:810239727516123176> Fairy Tail Commands')
-            .setDescription('A set of commands specifically designed for Fairy Tail anime.')
-            .setColor(botcolo2)
-            .addFields({
-                    name: `Read command`,
-                    value: 'An custom built function to display any pages of Fairy Tail 100 years quest \n:small_orange_diamond: Usage !read `An existing chapter number` `An existing page number` \nExample : `!read 50 10` (displays page 10 of chapter 50) \nUse `!read` for more information'
-                }, {
-                    name: 'Chapters Index',
-                    value: 'Get a list of all existing chapters of Fairy Tail 100 Years Quest and links to respective chapters to start reading! \n:small_orange_diamond: Usage : `!chapters`'
-                }, {
-                    name: 'Mage Info **(WIP)**',
-                    value: 'Search and get information regarding any fairy tail character using this command on the go! \n:small_orange_diamond: Usage : `!mage <an existing character name>`'
-                },
-                //{ name: `Chapter Info **(WIP)**`, value: 'Shows information regarding a specific chaper of Fairy Tail 100 years quest \n:small_orange_diamond: Usage : `!info <An existing chapter number>`' },
-
-            )
-            .setFooter('| All these commands works in DMs itself! |')
-
-        const funembed = new Discord.MessageEmbed()
-            .setTitle(':game_die: Fun Commands')
-            .setColor(botcolo2)
-            .addFields(
-
-                // { name: 'Gay Rate', value: 'Displays how gay an user is \n:small_orange_diamond: Usage : `!howgay <tag a user (optional)>`' },
-                {
-                    name: 'Waifu Rate',
-                    value: 'Shows the waifu percent of an user \n:small_orange_diamond: Usage : `!waifurate <tag a user (optional)>`'
-                },
-                //{ name: 'Thot Rate', value: 'Shows the thotiness of an user \n:small_orange_diamond: Usage : `!thotrate <tag a user (optional)`' },
-                // { name: 'Shipping', value: 'Displays the percent of success between user pairings *totally accurate* \n:small_orange_diamond: Usage: `!ship <tag a user>`' },
-                {
-                    name: 'Av / Avatar',
-                    value: 'Displays the avatar of an user \n:small_orange_diamond: Usage : `!av <tag a user (optional)>`'
-                },
-            )
-
+        
         const mdembed = new Discord.MessageEmbed()
             .setTitle('<:dex:810247280987996312> MangaDex Commands')
             .setColor(botcolo2)
@@ -117,73 +35,6 @@ module.exports = {
                 value: 'Displays the list of top 10 most rated mangas of all time \n:small_orange_diamond: Usage : `!md.top`'
             })
 
-        const utilembed = new Discord.MessageEmbed()
-            .setTitle(':tools: Utility')
-            .setColor(botcolo2)
-            .addFields({
-                    name: 'Ping Calculator',
-                    value: 'Displays the ping of the user and the bot \n:small_orange_diamond: Usage : `!ping`'
-                }, {
-                    name: 'User Info',
-                    value: 'Displays information regarding a specific user in a guild \n:small_orange_diamond: Usage : `!userinfo <tag a user>`'
-                }, {
-                    name: 'Server Info',
-                    value: 'Displays information regarding the guild in which the command was used \n:small_orange_diamond: Usage : `!serverinfo`'
-                },
-                /*{ name: 'Support', value: 'DM\'s the user an invite to the official Radial bot support server \n:small_orange_diamond: Usage : `!support`' },
-                { name: `ID`, value: 'Sends the Discord ID of an specified user \n:small_orange_diamond: Usage : `!id <tag a user (optional)>`' }*/
-            )
-            .setFooter('Syntax guide : `< >` optional')
-
-        const imagemebed = new Discord.MessageEmbed()
-            .setTitle('Image Commands')
-            .setColor(botcolo2)
-            .addFields(
-                // {name: 'Random Anime Images' , value: 'Displays random anime images \n:small_orange_diamond: Usage : `!anime` or `!waifu`'},
-                {
-                    name: 'Random Dog Images',
-                    value: 'Sends random images of cute dogs \n:small_orange_diamond: Usage : `!dog`'
-                }, {
-                    name: 'Random Cat Images',
-                    value: 'Shows images of random fluffy cats \n:small_orange_diamond: Usage : `!cat`'
-                },
-            )
-
-        /*if (!args[1]) {
-            return message.author.send(load).then( msg => {
-                msg.delete({ timeout: 500 }).then(() => {
-            return message.author.send(embed).catch(err => message.reply(errembed)).catch(err => console.log('Missing permission'));
-            })
-        }).catch(e => message.channel.send(`${e}`))
-        
-    }*/
-
-
-
-        /* if (args[1].toLowerCase() === 'fun') {
-             return message.author.send(funembed).catch(err => message.reply(errembed)).catch(err => console.log('Missing permission'));
-         }*/
-
-
-
-        /* if (args[1].toLowerCase() === 'utility') {
-             return message.author.send(utilembed).catch(err => message.reply(errembed)).catch(err => console.log('Missing permission'));
-         }*/
-
-        /* if (args[1].toLowerCase() === 'others'){
-             return message.author.send(mdembed).catch(err => message.reply(errembed)).catch(err => console.log('Missing permission'));
-         }*/
-
-
-
-        /* const WordArray = ['fairy' || 'fairy tail' || 'md' || 'mangadex']
-
-         WordArray.some(parameter => {
-             if (!message.content.toLowerCase().includes(parameter)) {
-
-                 return message.author.send('could not find the module').catch(err => message.reply(errembed)).catch(err => console.log('Missing permission'));
-             }
-         })*/
 
         if (message.guild) {
 
@@ -203,18 +54,20 @@ module.exports = {
 
                         if (collected.first().content.toLowerCase() === 'dm') { // || collected.first().content.toLowerCase() === 'y'){
                             msg.delete()
-
-
                             if (!args[1]) {
-                                return message.author.send(embed).catch(err => message.channel.send(`<@${message.author.id}>`, errembed)).catch(err => console.log('Missing permission'));
+                                return message.author.send(helpembed.mainpage).catch(err => message.channel.send(`<@${message.author.id}>`, errembed)).catch(err => console.log('Missing permission'));
                             }
-
-
                             if ((args[1].toLowerCase() === 'image') || (args[1].toLowerCase() === 'img')) {
-                                return message.author.send(imagemebed).catch(err => message.channel.send(`<@${message.author.id}>`, errembed)).catch(err => console.log('Missing permission'));
+                                return message.author.send(helpembed.imagecommands).catch(err => message.channel.send(`<@${message.author.id}>`, errembed)).catch(err => console.log('Missing permission'));
                             }
                             if (args[1].toLowerCase() === 'utility') {
-                                return message.author.send(utilembed)
+                                return message.author.send(helpembed.utilitycommands).catch(err => message.channel.send(`<@${message.author.id}>`, errembed)).catch(err => console.log('Missing permission'));
+                            }
+                            if (args[1].toLowerCase() === 'moderation' || (args[1].toLowerCase() === 'mod')){
+                                return message.author.send(helpembed.moderationcommands).catch(err => message.channel.send(`<@${message.author.id}>`, errembed)).catch(err => console.log('Missing permission'));
+                            }
+                            if (args[1].toLowerCase() === 'fun') {
+                                return message.author.send(helpembed.funcommands).catch(err => message.channel.send(`<@${message.author.id}>`, errembed)).catch(err => console.log('Missing permission'));
                             }
 
                         } else if (collected.first().content.toLowerCase() === 'channel' || collected.first().content.toLowerCase() === 'ch') {
@@ -223,15 +76,14 @@ module.exports = {
                                     name: 'main',
                                     content: new MessageEmbed({
                                         color: '#001aff',
-                                        // title: 'Sorcerer Weekly Bot Help',
                                         author: {
                                             name: 'Radial Bot Help',
                                         },
                                         description: `[Support Server](https://discord.gg/dBggm8KpsU) | [Invite URL](https://discord.com/oauth2/authorize?client_id=770365212704243784&scope=bot&permissions=101440)`,
                                         fields: [{
-
+                                    
                                                 name: ':large_blue_diamond: Radial Bot',
-                                                value: "Radial is a all in one moderation / fun Bot",
+                                                value: "Radial is a multifunctional bot with tons of fun and moderation commands! With a customizable prefix",
                                             },
                                             {
                                                 name: ':large_blue_diamond: Prefix of Radial : `!`',
@@ -244,6 +96,10 @@ module.exports = {
                                             {
                                                 name: 'Interactive reaction system',
                                                 value: '\u200b\nReact with `▶️` to proceed to the next page \nReact with `◀️` to proceed to the previous page \nWhen you are done , react with 🗑️ to delete the command module viewer'
+                                            },
+                                            {
+                                                name : 'Index',
+                                                value: 'Page 1 : General information \nPage 2 : Fun commands \nPage 3 Utility commands \nPage 4 : Image commands \nPage 5 Moderation commands'
                                             }
                                         ],
                                         time: new Date(),
@@ -251,39 +107,36 @@ module.exports = {
                                             text: 'Developed by : EwasTaken#3961',
                                             iconURL: 'https://cdn.discordapp.com/attachments/793195039731482648/793533247967461416/ej1.png'
                                         }
-
-
+                                    
+                                    
                                     }),
                                     reactions: {
                                         '▶️': 'page1',
                                         '🗑️': 'delete',
                                     }
-
+ 
                                 },
-
                                 {
                                     name: 'page1',
                                     content: new MessageEmbed({
-                                        title: ':tools: Utility',
+                                        title: 'Fun',
                                         color: botcolo2,
                                         fields: [{
-                                                name: 'Ping Calculator',
-                                                value: 'Displays the ping of the user and the bot \n:small_orange_diamond: Usage : `!ping`'
-                                            },
-                                            {
-                                                name: 'User Info',
-                                                value: 'Displays information regarding a specific user in a guild \n:small_orange_diamond: Usage : `!userinfo <tag a user>`'
-                                            },
-                                            {
-                                                name: 'Server Info',
-                                                value: 'Displays information regarding the guild in which the command was used \n:small_orange_diamond: Usage : `!serverinfo`'
-                                            },
-                                            {
-                                                name: '\u200b',
-                                                value: '`< >` are not needed when using the command'
-                                            }
-
-                                        ],
+                                            name: 'Avatar',
+                                            value: 'Displays the avatar of a specified user \n:small_orange_diamond: Usage : `!av [mention / ID]`'
+                                        },{
+                                            name: 'Meme',
+                                            value: 'Gets quality memes straight from r/dankmemes \n:small_orange_diamond: Usage : `!meme`'
+                                        },{
+                                            name: 'Waifu rate',
+                                            value: 'Shows how much of a waifu a user is \n:small_orange_diamond: Usage : `!waifurate [mention / ID]`'
+                                        },{
+                                            name: 'Shipping',
+                                            value: 'Displays the chance of success in user pairing \n:small_orange_diamond: Usage : `!ship [mention / ID]`'
+                                        },{
+                                            name: '\u200b',
+                                            value: 'Syntax guide \n`[]` required parameters \n`()` optional parameters'
+                                        }],
                                         footer: {
                                             text: '| Developed by EwasTaken |',
                                             iconURL: 'https://cdn.discordapp.com/attachments/793195039731482648/793533247967461416/ej1.png'
@@ -295,8 +148,47 @@ module.exports = {
                                         '🗑️': 'delete',
                                     }
                                 },
+
                                 {
                                     name: 'page2',
+                                    content: new MessageEmbed({
+                                        title: ':tools: Utility',
+                                        color: botcolo2,
+                                        fields: [{
+                                                name: 'Ping Calculator',
+                                                value: 'Displays the ping of the user and the bot \n:small_orange_diamond: Usage : `!ping`'
+                                            },
+                                            {
+                                                name: 'User Info',
+                                                value: 'Displays information regarding a specific user in a guild \n:small_orange_diamond: Usage : `!userinfo [tag a user]`'
+                                            },
+                                            {
+                                                name: 'Server Info',
+                                                value: 'Displays information regarding the guild in which the command was used \n:small_orange_diamond: Usage : `!serverinfo`'
+                                            },
+                                            {
+                                                name: 'Bot status',
+                                                value: 'Displays the general information regarding radial bot \n:small_orange_diamond: Usage : `!status`'
+                                            },
+                                            {
+                                                name: '\u200b',
+                                                value: 'Syntax guide \n`[]` required parameters \n`()` optional parameters'
+                                            }
+                                    
+                                        ],
+                                        footer: {
+                                            text: '| Developed by EwasTaken |',
+                                            iconURL: 'https://cdn.discordapp.com/attachments/793195039731482648/793533247967461416/ej1.png'
+                                        }
+                                    }),
+                                    reactions: {
+                                        '◀️': 'page1',
+                                        '▶️': 'page3',
+                                        '🗑️': 'delete',
+                                    }
+                                },
+                                {
+                                    name: 'page3',
                                     content: new MessageEmbed({
                                         title: 'Image Commands',
                                         color: botcolo2,
@@ -318,8 +210,57 @@ module.exports = {
 
                                     }),
                                     reactions: {
-                                        '◀️': 'page1',
+                                        '◀️': 'page2',
+                                        '▶️': 'page4',
                                         '🗑️': 'delete',
+                                        
+                                    }
+                                },
+                                {
+                                    name: 'page4',
+                                    content: new MessageEmbed({
+                                        title: 'Moderation',
+                                        color: botcolo2,
+                                        fields: [{
+                                            name: 'Add Role',
+                                            value: 'Add roles to a specific user with ease \n:small_orange_diamond: Usage : `!addrole [mention / ID] [role name / mention / ID]`'
+                                        },{
+                                            name: 'Remove Role',
+                                            value: 'Remove roles from a specific user \n:small_orange_diamond: Usage :`!removerole [mention / ID] [role name / mention / ID]`'
+                                        },{
+                                            name: 'Purge',
+                                            value: 'Delete specific amount of messages from a channel \n:small_orange_diamond: Usage : `!purge [number of messages to be deleted]`'
+                                        },{
+                                            name: 'Lock Channel',
+                                            value: 'Locks the channel in which the command is used \n:small_orange_diamond: Usage : `!lock`'
+                                        },{
+                                            name: 'Unlock Channel',
+                                            value: 'Unlocks a previously locked channel \n:small_orange_diamond: Usage : `!unlock`'
+                                        },{
+                                            name: 'Kick',
+                                            valie: 'Kicks a user from the guild \n:small_orange_diamond: Usage : `!kick [mention / ID] (reason)`'
+                                        },{
+                                            name: 'Ban',
+                                            value: 'Bans a user from the guild \n:small_orange_diamond: Usage : `!ban [mention / ID] (reason)`'
+                                        },{
+                                            name: 'Unban',
+                                            value: 'Unbans a previously banned user \n:small_orange_diamond: Usage : `!unban [mention / ID]`'
+                                        },{
+                                            name: 'Set Nickname',
+                                            value: 'Changes the nickname of a user \n:small_orange_diamond: Usage : `!setnick [mention / ID] [new nickname]`'
+                                        },{
+                                            name: '\u200b',
+                                            value: 'Syntax guide \n`[]` required parameters \n`()` optional parameters'
+                                        }],
+                                        footer: {
+                                            text: '| Developed by EwasTaken |',
+                                            iconURL: 'https://cdn.discordapp.com/attachments/793195039731482648/793533247967461416/ej1.png'
+                                        }
+                                    }),
+                                    reactions: {
+                                        '◀️': 'page3',
+                                        '🗑️': 'delete',
+
                                     }
                                 }
                             ])
@@ -356,14 +297,23 @@ module.exports = {
 
         if (!message.guild) {
             if (!args[1]) {
-                return message.channel.send(embed).catch(e => console.log(e))
+                return message.channel.send(helpembed.mainpage).catch(e => console.log(e))
             }
-            /*if ((args[1].toLowerCase() === 'fairy') || (args[1].toLowerCase() === 'ft') || (args[1].toLowerCase() === 'fairy' && args[2].toLowerCase() === 'tail')) {
+       /* if ((args[1].toLowerCase() === 'fairy') || (args[1].toLowerCase() === 'ft') || (args[1].toLowerCase() === 'fairy' && args[2].toLowerCase() === 'tail')) {
                 return message.channel.send(fairyembed).catch(err => message.reply(errembed)).catch(err => console.log('Missing permission'));
             }*/
 
             if ((args[1].toLowerCase() === 'image') || (args[1].toLowerCase() === 'img')) {
-                return message.channel.send(imagemebed).catch(e => console.log(e));
+                return message.channel.send(helpembed.imagecommands).catch(e => console.log(e));
+            }
+            if ((args[1].toLowerCase() === 'moderation') || (args[1].toLowerCase() === 'mod')){
+                return message.channel.send(helpembed.moderationcommands).catch(e => console.log(e));
+            }
+            if ((args[1].toLowerCase() === 'utility') || (args[1].toLowerCase() === 'util')){
+                return message.channel.send(helpembed.utilitycommands).catch(e => console.log(e));
+            }
+            if (args[1].toLowerCase() === 'fun'){
+                return message.channel.send(helpembed.funcommands).catch(e => console.log(e));
             }
 
         }
