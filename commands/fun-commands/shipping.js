@@ -14,7 +14,16 @@ module.exports = {
         const shipNum = Math.floor(Math.random() * 100) + 1 + '%'
         if (!args[1]) return message.channel.send(new Discord.MessageEmbed()
         .setDescription('```diff\n- Error : Please provide a user ID / mention```')).catch(e => console.log(e));
-        let shipUser = message.client.users.fetch(args[1].replace(/\D/g, ''))
+        const shipUser = message.client.users.fetch(args[1].replace(/\D/g, ''))
+
+        try { 
+            await shipUser
+        } catch (err) {
+            message.channel.send(new Discord.MessageEmbed()
+                .setDescription('```diff\n- Error : unknown user / ID```')).catch(console.error);
+            return;
+        }
+
         shipUser.then(user => {
             if(shipNum > 50 + 1 + '%'){
             message.channel.send(new Discord.MessageEmbed()
@@ -31,7 +40,6 @@ module.exports = {
 
             }
         }).catch(err => message.channel.send(new Discord.MessageEmbed()
-            .setColor('RED')
-            .setDescription(`<:exclala:812387008365985804> User not found!`))).catch(err => console.log(err));
+            .setDescription(`\`\`\`diff\n- Error : ${err}\`\`\`\n ${errorText}`))).catch(console.error);
     }
 }
