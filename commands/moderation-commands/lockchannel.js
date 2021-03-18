@@ -3,9 +3,9 @@ module.exports = {
     aliases: ['channellock', 'lockchannel', 'lockdown'],
     execute(message, args, Discord) {
         if (!message.guild) return;
-        if (!message.member.hasPermission('MANAGE_CHANNELS')) return;
-        if (!message.guild.me.hasPermission('MANAGE_CHANNELS')) return message.channel.send(new Discord.MessageEmbed()
-            .setDescription('```diff\n- Error : Missing bot permission\n+ Permission Required : Manage Channels```')).catch(console.error);
+        if (!message.member.hasPermission('ADMINISTRATOR')) return;
+        if (!message.guild.me.hasPermission('ADMINISTRATOR')) return message.channel.send(new Discord.MessageEmbed()
+            .setDescription('```diff\n- Error : Missing bot permission\n+ Permission Required : Administrator```')).catch(console.error);
         let ch = message.channel.permissionsFor(message.guild.roles.everyone)
         
 
