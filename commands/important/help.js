@@ -4,8 +4,7 @@ module.exports = {
 
         var helpembed = require('../../embeds/help-embed')
         const errembed = new Discord.MessageEmbed()
-            .setColor('RED')
-            .setDescription('Hey there, looks like i was not able to DM you , please make sure that your DMs are open :thumbsup:')
+            .setDescription('```diff\n- Unable to DM user```\nMake sure your DM\'s are opened , then try again')
         const {
             Client,
             MessageEmbed
