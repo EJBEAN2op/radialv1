@@ -1,3 +1,4 @@
+const errorText = require('../../embeds/text')
 module.exports = {
     name: 'ship',
     aliases: ['shipping'],
