@@ -4,7 +4,7 @@ module.exports = {
         if(!message.guild) return;
 
         if (!message.member.hasPermission('MANAGE_CHANNELS')) return;
-        if (!message.guild.me.hasPermission('MANAGE_CHANNELS')) return message.channel.send(new Discord.MessageEmbed()
+        if (!message.guild.me.hasPermission('MANAGE_CHANNELS' , 'SEND_MESSAGES')) return message.channel.send(new Discord.MessageEmbed()
             .setDescription('```diff\n- Error : Missing bot permission\n+ Permission Required : Manage Channels```')).catch(console.error);
         message.channel.send(new Discord.MessageEmbed()
             .setTitle(`<a:boing:815180305190223903> awaiting user response`)

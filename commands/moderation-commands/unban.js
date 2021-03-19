@@ -1,3 +1,4 @@
+const errorText = require('../../embeds/text')
 module.exports = {
     name: 'unban',
     execute: async (message, args, Discord) => {
@@ -20,7 +21,9 @@ module.exports = {
                     .setDescription(`\`\`\`diff\n- Error : could not find user ID in server ban logs\nProvided ID - ${userID}\`\`\``)).catch(console.error)
                 return
             } else {
-                message.guild.members.unban(bUser.user)
+                message.guild.members.unban(bUser.user).catch(err => message.channel.send(new Discord.MessageEmbed()
+                .setDescription(`\`\`\`diff\n- Error : ${err}\`\`\`\n${errorText}`))).catch(console.error);
+    
                 message.channel.send(new Discord.MessageEmbed()
                     .setDescription(`\`\`\`diff\n+ Unbanned user : ${bUser.user.tag}\`\`\``)).catch(console.error)
             }
