@@ -1,7 +1,7 @@
 module.exports = {
     name: 'ship',
     aliases: ['shipping'],
-    execute(message, args, Discord) {
+    execute: async (message, args, Discord) => {
         if (!message.guild) return;
         if (args.length > 2) return;
         const sademotes = [
