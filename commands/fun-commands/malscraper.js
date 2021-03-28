@@ -18,6 +18,8 @@ module.exports = {
             if (!status) status = 'unknown'
             let trailer = data.trailer
             if (!trailer) trailer = ''
+            let ranked = data.ranked
+            if(!ranked) ranked = 'unknown'
         const newembed = new MessageEmbed()
                 .setTitle(`${title} | ${data.type}`)
                 .setURL(url)
