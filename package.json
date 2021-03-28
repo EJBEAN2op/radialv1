@@ -12,6 +12,7 @@
   "dependencies": {
     "@discordjs/opus": "^0.4.0",
     "@keyv/mongo": "^1.1.0",
+    "cheerio": "^1.0.0-rc.5",
     "danbooru": "^3.1.0",
     "discord-image-generation": "^1.4.7",
     "discord.js": "^12.5.1",
@@ -23,6 +24,7 @@
     "mal-scraper": "^2.11.3",
     "mangadex-full-api": "^4.3.1",
     "mongoose": "^5.11.17",
+    "node-fetch": "^2.6.1",
     "node-pre-gyp": "^0.17.0",
     "pets.js": "^1.0.4",
     "random-anime": "^1.0.6",
