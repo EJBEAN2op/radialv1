@@ -8,7 +8,7 @@ module.exports = {
         const  name = args.splice(1).join(" ");
         malScraper.getInfoFromName(name).then((data) => {
             let title = data.title
-            let image = data.image
+            let image = data.picture
             if(!image) image = 'https://media.discordapp.net/attachments/802857839488008206/825698742933520404/400.png?width=605&height=390'
             let score = data.score
             if (!score) score = 'unknown'
