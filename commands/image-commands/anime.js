@@ -24,7 +24,7 @@ module.exports = {
     }
     getfromsite((data) => {
        const image = getlatestpic(data)
-       const embed = new MessageEmbed()
+       const embed = new Discord.MessageEmbed()
        .setTitle('Random Anime Images')
        .setDescription('Flags : `SFW`')
        .setImage(image.link)
