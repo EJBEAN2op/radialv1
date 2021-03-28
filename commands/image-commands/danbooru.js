@@ -15,8 +15,8 @@ module.exports = {
             let character = post.tag_string_character
             let image = post.tag_large_url
 
-            if (!image) return message.channel.send(new MessageEmbed()
-            .setDescription('```diff\n- Error : Image could not be found```')).catch(console.error)
+           /* if (!image) return message.channel.send(new MessageEmbed()
+            .setDescription('```diff\n- Error : Image could not be found```')).catch(console.error)*/
             if (!character) character = 'Unknown'
             
             const embed = new MessageEmbed()
