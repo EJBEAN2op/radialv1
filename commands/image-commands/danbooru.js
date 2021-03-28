@@ -8,7 +8,7 @@ module.exports = {
     execute: async (message, args, Discord) => {
         if(!message.channel.nsfw) return;
         const booru = new Danbooru();
-        booru.posts({ tags: 'rating:safe' }).then(posts => {
+        booru.posts({ tags: 'rating:safe' }).then(async posts => {
             
             const index = Math.floor(Math.random() * posts.length)
             const post = posts[index]
