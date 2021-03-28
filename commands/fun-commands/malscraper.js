@@ -31,7 +31,7 @@ module.exports = {
                 )
                 .setFooter(`${status} | Data provided my myAnimeList`)
                 message.channel.send(newembed)
-            }).catch(err => message.channel.send(new Discord.MessageEmbed()
+            }).catch(err => message.channel.send(new MessageEmbed()
             .setDescription(`\`\`\`diff\n- Error : ${err}\`\`\`\n${errorText}`))).catch(console.error);
 
 
