@@ -3,7 +3,7 @@ const errorText = require('../../embeds/text')
 const { MessageEmbed } = require('discord.js')
 module.exports = {
     name: 'mal',
-    aliases: ['anime' , 'myanimelist'],
+    aliases: ['myanimelist'],
     execute: async (message , args) => {
         const  name = args.splice(1).join(" ");
         malScraper.getInfoFromName(name).then((data) => {
@@ -27,7 +27,7 @@ module.exports = {
                 .setThumbnail(image)
                 .setDescription(`[Watch Here](${url}) | [Trailer](${data.trailer}) | ID: \`${data.id}\``)
                 .addFields(
-                    { name: 'Rating' , value: score , inline:true },
+                    { name: 'Score' , value: score , inline:true },
                     { name: 'Ranking' , value: ranked , inline:true },
                     { name: 'Rating' , value: `${data.rating}` , inline:true }
                 )
