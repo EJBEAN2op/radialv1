@@ -23,7 +23,7 @@ module.exports = {
                 .setTitle('Random Anime Images')
                 .setColor('RANDOM')
                 .setDescription(`Character : ${character}\nFlags : \`SFW\``)
-                .setImage(image)
+                .setImage(post.tag_large_url)
                 .setFooter(`Data provided by Danbooru`)
             
             try {
