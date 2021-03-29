@@ -1,6 +1,6 @@
 module.exports = {
     name: 'help',
-    execute: async (message, args, Discord) => {
+    execute: async (message, args, Discord , bot , prefix) => {
 
         var helpembed = require('../../embeds/help-embed')
         const errembed = new Discord.MessageEmbed()
@@ -85,7 +85,7 @@ module.exports = {
                                                 value: "Radial is a multifunctional bot with tons of fun and moderation commands! With a customizable prefix",
                                             },
                                             {
-                                                name: ':large_blue_diamond: Prefix of Radial : `!`',
+                                                name: `:large_blue_diamond: Prefix for this server : \`${prefix}\`\nlarge_blue_diamond: Global prefix : \`!\``,
                                                 value: `version : \`${version}\``
                                             },
                                             {
@@ -103,7 +103,7 @@ module.exports = {
                                         ],
                                         time: new Date(),
                                         footer: {
-                                            text: 'Developed by : EwasTaken#3961',
+                                            text: 'Developed by : EJ BEAN#3961',
                                             iconURL: 'https://cdn.discordapp.com/attachments/793195039731482648/793533247967461416/ej1.png'
                                         }
                                     
@@ -122,22 +122,22 @@ module.exports = {
                                         color: botcolo2,
                                         fields: [{
                                             name: 'Avatar',
-                                            value: 'Displays the avatar of a specified user \n:small_orange_diamond: Usage : `!av [mention / ID]`'
+                                            value: `Displays the avatar of a specified user \n:small_orange_diamond: Usage : \`${prefix}av [mention / ID]\``
                                         },{
                                             name: 'Meme',
-                                            value: 'Gets quality memes straight from r/dankmemes \n:small_orange_diamond: Usage : `!meme`'
+                                            value: `Gets quality memes straight from r/dankmemes \n:small_orange_diamond: Usage : \`${[prefix]}meme\``
                                         },{
                                             name: 'Waifu rate',
-                                            value: 'Shows how much of a waifu a user is \n:small_orange_diamond: Usage : `!waifurate [mention / ID]`'
+                                            value: `Shows how much of a waifu a user is \n:small_orange_diamond: Usage : \`${prefix}waifurate [mention / ID]\``
                                         },{
                                             name: 'Shipping',
-                                            value: 'Displays the chance of success in user pairing \n:small_orange_diamond: Usage : `!ship [mention / ID]`'
+                                            value: `Displays the chance of success in user pairing \n:small_orange_diamond: Usage : \`${prefix}ship [mention / ID]\``
                                         },{
                                             name: '\u200b',
                                             value: 'Syntax guide \n`[]` required parameters \n`()` optional parameters'
                                         }],
                                         footer: {
-                                            text: '| Developed by EwasTaken |',
+                                            text: '| Developed by EJ BEAN |',
                                             iconURL: 'https://cdn.discordapp.com/attachments/793195039731482648/793533247967461416/ej1.png'
                                         }
                                     }),
@@ -155,19 +155,19 @@ module.exports = {
                                         color: botcolo2,
                                         fields: [{
                                                 name: 'Ping Calculator',
-                                                value: 'Displays the ping of the user and the bot \n:small_orange_diamond: Usage : `!ping`'
+                                                value: `Displays the ping of the user and the bot \n:small_orange_diamond: Usage : \`${prefix}ping\``
                                             },
                                             {
                                                 name: 'User Info',
-                                                value: 'Displays information regarding a specific user in a guild \n:small_orange_diamond: Usage : `!userinfo [tag a user]`'
+                                                value: `Displays information regarding a specific user in a guild \n:small_orange_diamond: Usage : \`${prefix}userinfo [tag a user]\``
                                             },
                                             {
                                                 name: 'Server Info',
-                                                value: 'Displays information regarding the guild in which the command was used \n:small_orange_diamond: Usage : `!serverinfo`'
+                                                value: `Displays information regarding the guild in which the command was used \n:small_orange_diamond: Usage : \`${prefix}serverinfo\``
                                             },
                                             {
                                                 name: 'Bot status',
-                                                value: 'Displays the general information regarding radial bot \n:small_orange_diamond: Usage : `!status`'
+                                                value: `Displays the general information regarding radial bot \n:small_orange_diamond: Usage : \`${prefix}status\``
                                             },
                                             {
                                                 name: '\u200b',
@@ -176,7 +176,7 @@ module.exports = {
                                     
                                         ],
                                         footer: {
-                                            text: '| Developed by EwasTaken |',
+                                            text: '| Developed by EJ BEAN |',
                                             iconURL: 'https://cdn.discordapp.com/attachments/793195039731482648/793533247967461416/ej1.png'
                                         }
                                     }),
@@ -195,15 +195,15 @@ module.exports = {
                                             //{name: 'Random Anime Images' , value: 'Displays random anime images \n:small_orange_diamond: Usage : `!anime` or `!waifu`'},
                                             {
                                                 name: 'Random Dog Images',
-                                                value: 'Sends random images of cute dogs \n:small_orange_diamond: Usage : `!dog`'
+                                                value: `Sends random images of cute dogs \n:small_orange_diamond: Usage : \`${prefix}dog\``
                                             },
                                             {
                                                 name: 'Random Cat Images',
-                                                value: 'Shows images of random fluffy cats \n:small_orange_diamond: Usage : `!cat`'
+                                                value: `Shows images of random fluffy cats \n:small_orange_diamond: Usage : \`${prefix}cat\``
                                             },
                                         ],
                                         footer: {
-                                            text: '| Developed by EwasTaken |',
+                                            text: '| Developed by EJ BEAN |',
                                             iconURL: 'https://cdn.discordapp.com/attachments/793195039731482648/793533247967461416/ej1.png'
                                         }
 
@@ -222,37 +222,37 @@ module.exports = {
                                         color: botcolo2,
                                         fields: [{
                                             name: 'Add Role',
-                                            value: 'Add roles to a specific user with ease \n:small_orange_diamond: Usage : `!addrole [mention / ID] [role name / mention / ID]`'
+                                            value: `Add roles to a specific user with ease \n:small_orange_diamond: Usage : \`${prefix}addrole [mention / ID] [role name / mention / ID]\``
                                         },{
                                             name: 'Remove Role',
-                                            value: 'Remove roles from a specific user \n:small_orange_diamond: Usage :`!removerole [mention / ID] [role name / mention / ID]`'
+                                            value: `Remove roles from a specific user \n:small_orange_diamond: Usage :\`${prefix}removerole [mention / ID] [role name / mention / ID]\``
                                         },{
                                             name: 'Purge',
-                                            value: 'Delete specific amount of messages from a channel \n:small_orange_diamond: Usage : `!purge [number of messages to be deleted]`'
+                                            value: `Delete specific amount of messages from a channel \n:small_orange_diamond: Usage : \`${prefix}purge [number of messages to be deleted]\``
                                         },{
                                             name: 'Lock Channel',
-                                            value: 'Locks the channel in which the command is used \n:small_orange_diamond: Usage : `!lock`'
+                                            value: `Locks the channel in which the command is used \n:small_orange_diamond: Usage : \`${prefix}lock\``
                                         },{
                                             name: 'Unlock Channel',
-                                            value: 'Unlocks a previously locked channel \n:small_orange_diamond: Usage : `!unlock`'
+                                            value: `Unlocks a previously locked channel \n:small_orange_diamond: Usage : \`${prefix}unlock\``
                                         },{
                                             name: 'Kick',
-                                            valie: 'Kicks a user from the guild \n:small_orange_diamond: Usage : `!kick [mention / ID] (reason)`'
+                                            valie: `Kicks a user from the guild \n:small_orange_diamond: Usage : \`${prefix}kick [mention / ID] (reason)\``
                                         },{
                                             name: 'Ban',
-                                            value: 'Bans a user from the guild \n:small_orange_diamond: Usage : `!ban [mention / ID] (reason)`'
+                                            value: `Bans a user from the guild \n:small_orange_diamond: Usage : \`${prefix}ban [mention / ID] (reason)\``
                                         },{
                                             name: 'Unban',
-                                            value: 'Unbans a previously banned user \n:small_orange_diamond: Usage : `!unban [mention / ID]`'
+                                            value: `Unbans a previously banned user \n:small_orange_diamond: Usage : \`${prefix}unban [mention / ID]\``
                                         },{
                                             name: 'Set Nickname',
-                                            value: 'Changes the nickname of a user \n:small_orange_diamond: Usage : `!setnick [mention / ID] [new nickname]`'
+                                            value: `Changes the nickname of a user \n:small_orange_diamond: Usage : \`${prefix}setnick [mention / ID] [new nickname]\``
                                         },{
                                             name: '\u200b',
                                             value: 'Syntax guide \n`[]` required parameters \n`()` optional parameters'
                                         }],
                                         footer: {
-                                            text: '| Developed by EwasTaken |',
+                                            text: '| Developed by EJ BEAN |',
                                             iconURL: 'https://cdn.discordapp.com/attachments/793195039731482648/793533247967461416/ej1.png'
                                         }
                                     }),
