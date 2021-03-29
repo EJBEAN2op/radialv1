@@ -85,7 +85,7 @@ module.exports = {
                                                 value: "Radial is a multifunctional bot with tons of fun and moderation commands! With a customizable prefix",
                                             },
                                             {
-                                                name: `:large_blue_diamond: Prefix for this server : \`${prefix}\`\nlarge_blue_diamond: Global prefix : \`!\``,
+                                                name: `:large_blue_diamond: Prefix for this server : \`${prefix}\`\n:large_blue_diamond: Global prefix : \`!\``,
                                                 value: `version : \`${version}\``
                                             },
                                             {
