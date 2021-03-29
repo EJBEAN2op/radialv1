@@ -201,6 +201,10 @@ module.exports = {
                                                 name: 'Random Cat Images',
                                                 value: `Shows images of random fluffy cats \n:small_orange_diamond: Usage : \`${prefix}cat\``
                                             },
+                                            {
+                                                name: 'Random Anime Images',
+                                                value: `Shows images of anime characters \n:small_orange_diamond: Usage : \`${prefix}anime\``
+                                            }
                                         ],
                                         footer: {
                                             text: '| Developed by EJ BEAN |',
