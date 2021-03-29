@@ -17,7 +17,9 @@ module.exports = {
         const num2 = 1
         await message.channel.bulkDelete(`${num1 + num2}`).then(x => {
             message.channel.send(new Discord.MessageEmbed()
-                .setDescription(`\`\`\`diff\n+ Cleared ${args[1]} messages\`\`\``))
+                .setDescription(`\`\`\`diff\n+ Cleared ${args[1]} messages\`\`\``)).then(e =>{
+                    e.delete({timeout: 3000}).catch(console.error)
+                })
         }).catch(err => message.channel.send(new Discord.MessageEmbed()
             .setDescription(`\`\`\`diff\n- ${err}\`\`\``))).catch(console.error)
 
