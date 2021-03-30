@@ -85,7 +85,7 @@ module.exports = {
                                                 value: "Radial is a multifunctional bot with tons of fun and moderation commands! With a customizable prefix",
                                             },
                                             {
-                                                name: `:large_blue_diamond: Prefix for this server : \`${prefix}\`\n:large_blue_diamond: Global prefix : \`!\``,
+                                                name: `:large_blue_diamond: Prefix for this server : \`${prefix}\`\nlarge_blue_diamond: Global prefix : \`!\``,
                                                 value: `version : \`${version}\``
                                             },
                                             {
@@ -241,7 +241,7 @@ module.exports = {
                                             value: `Unlocks a previously locked channel \n:small_orange_diamond: Usage : \`${prefix}unlock\``
                                         },{
                                             name: 'Kick',
-                                            valie: `Kicks a user from the guild \n:small_orange_diamond: Usage : \`${prefix}kick [mention / ID] (reason)\``
+                                            value: `Kicks a user from the guild \n:small_orange_diamond: Usage : \`${prefix}kick [mention / ID] (reason)\``
                                         },{
                                             name: 'Ban',
                                             value: `Bans a user from the guild \n:small_orange_diamond: Usage : \`${prefix}ban [mention / ID] (reason)\``
