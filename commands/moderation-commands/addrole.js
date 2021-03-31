@@ -2,14 +2,13 @@ const errorText = require('../../embeds/text')
 module.exports = {
     name: 'addrole',
     aliases: ['role'],
-    execute: async (message, args, Discord) => {
+    execute: async (message, args, Discord, bot, prefix) => {
         if (!message.guild) return;
         if (!message.member.hasPermission('MANAGE_ROLES')) return;
         if (!message.guild.me.hasPermission('MANAGE_ROLES')) return message.channel.send(new Discord.MessageEmbed()
             .setDescription('```diff\n- Error : Missing bot permission\n+ Permission Required : Manage Roles```')).catch(console.error);
         if (!args[1]) return message.channel.send(new Discord.MessageEmbed()
-            .setDescription('```diff\n- Error : Missing arguments , please provide a valid user\n+ Usage : !role [user ID / mention] [role ID / mention]```')
-            .setFooter(`Make sure to use server prefix instead of <!>`))
+            .setDescription(`\`\`\`diff\n- Error : Missing arguments , please provide a valid user\n+ Usage : ${prefix}role [user ID / mention] [role ID / mention]\`\`\``))
         const rolename = args[2];
         const role = args.splice(2).join(" ")
         const target = message.guild.roles.cache.find(x => x.id === rolename) ||
