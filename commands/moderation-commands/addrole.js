@@ -35,13 +35,14 @@ module.exports = {
             if (target.position >= message.member.roles.highest.position) return message.channel.send(new Discord.MessageEmbed()
                 .setDescription(`\`\`\`diff\n- Error : The role ${target.name} is higher than your role\`\`\``)).catch(console.error);
             if (member.roles.cache.has(target.id)) {
+                member.roles.remove(target).catch(e => console.log(e))
                 message.channel.send(new Discord.MessageEmbed()
-                    .setDescription('```diff\n- Error : user already has the role```')).catch(console.error)
+                    .setDescription(`\`\`\`diff\n- Removed role ${target.name} from ${member.user.username}\`\`\`\nRole removed : <@&${target.id}> (${target.id})`)).catch(console.error)
                 return;
             } else {
                 member.roles.add(target).catch(e => console.log(e))
                 message.channel.send(new Discord.MessageEmbed()
-                    .setDescription(`Added role <@&${target.id}> to <@${member.user.id}>`))
+                    .setDescription(`\`\`\`diff\n+ Added role ${target.name}> to ${member.user.username}\`\`\`\nRole added : <@&${target.id}> (${target.id})`)).catch(console.error)
             }
         }).catch(err => message.channel.send(new Discord.MessageEmbed()
             .setDescription(`\`\`\`diff\n- Error : ${err}\`\`\`\n${errorText}`))).catch(console.error);
