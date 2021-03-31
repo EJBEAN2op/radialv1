@@ -41,7 +41,7 @@ module.exports = {
             } else {
                 member.roles.add(target).catch(e => console.log(e))
                 message.channel.send(new Discord.MessageEmbed()
-                    .setDescription(`\`\`\`diff\n+ Added role ${target.name}> to ${member.user.username}\`\`\`\nRole added : <@&${target.id}> (${target.id})`)).catch(console.error)
+                    .setDescription(`\`\`\`diff\n+ Added role ${target.name} to ${member.user.username}\`\`\`\nRole added : <@&${target.id}> (${target.id})`)).catch(console.error)
             }
         }).catch(err => message.channel.send(new Discord.MessageEmbed()
             .setDescription(`\`\`\`diff\n- Error : ${err}\`\`\`\n${errorText}`))).catch(console.error);
