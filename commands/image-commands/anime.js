@@ -45,8 +45,8 @@ request.get("https://mashtoolz.xyz/api/catgirl", (err, res, body) => {
         .setTimestamp()
 
     message.channel.send(embed).catch(err => message.channel.send(new Discord.MessageEmbed()
-      .setDescription(`\`\`\`diff\n- Error : ${err}\`\`\`\n${errorText}`)).catch(console.error);
-    })
+      .setDescription(`\`\`\`diff\n- Error : ${err}\`\`\`\n${errorText}`))).catch(console.error);
+
 
 })
   }
