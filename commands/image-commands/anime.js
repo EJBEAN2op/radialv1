@@ -32,7 +32,8 @@ module.exports = {
       message.channel.send(embed).catch(err => message.channel.send(new Discord.MessageEmbed()
       .setDescription(`\`\`\`diff\n- Error : ${err}\`\`\`\n${errorText}`))).catch(console.error);
     })*/
-request.get("https://mashtoolz.xyz/api/catgirl", (err, res, body) => {
+    request.get("https://mashtoolz.xyz/api/catgirl", { encoding: "base64" }, (err, res, body) => {
+
 
     const imageStream = Buffer.from(body, "base64");
     const attachment = new Discord.MessageAttachment(imageStream, "catgirl.jpg");
