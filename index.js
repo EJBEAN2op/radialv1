@@ -1,6 +1,3 @@
-const {
-    info
-} = require('console');
 const Discord = require('discord.js');
 const PREFIX = '!';
 const bot = new Discord.Client({
@@ -10,6 +7,7 @@ const fs = require('fs')
 const mongoose = require('mongoose')
 require('dotenv').config()
 const suggestionEmbed = require('./embeds/suggestion-embed')
+const core = require('./JSON/core.json')
 const {
     serverID,
     mongoPath
@@ -39,6 +37,9 @@ bot.on('ready', async () => {
     }).then(() => {
         console.log('Connected to mongo')
     })
+    bot.channels.resolve('827305048048140318').send(new Discord.MessageEmbed()
+    .setDescription(`\`\`\`diff\n+ Logged in as ${bot.user.username}\n- Version : ${core.version}\`\`\``)
+    .setTimestamp()).catch(console.error)
 })
 
 let maintanence = false;
