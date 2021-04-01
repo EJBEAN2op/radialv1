@@ -1,6 +1,6 @@
 const cheerio = require('cheerio');
 const fetch = require('node-fetch');
-const page = 'https://mashtoolz.xyz/plzcatgirl';
+const page = 'https://mashtoolz.xyz/api/catgirl';
 const errorText = require('../../embeds/text')
 module.exports = {
   name: 'anime',
