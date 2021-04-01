@@ -6,7 +6,7 @@ module.exports = {
   name: 'anime',
   aliases: ['waifu'],
   execute: async (message, args, Discord) => {
-    function getfromsite(resp) {
+    /*function getfromsite(resp) {
       fetch(page)
         .then(res => res.text()).catch(console.error)
         .then((html) => {
@@ -30,6 +30,24 @@ module.exports = {
         .setColor('RANDOM')
       message.channel.send(embed).catch(err => message.channel.send(new Discord.MessageEmbed()
       .setDescription(`\`\`\`diff\n- Error : ${err}\`\`\`\n${errorText}`))).catch(console.error);
+    })*/
+request.get("https://mashtoolz.xyz/api/catgirl", (err, res, body) => {
+
+    const imageStream = Buffer.from(body, "base64");
+    const attachment = new Discord.MessageAttachment(imageStream, "catgirl.jpg");
+
+    let embed = new Discord.MessageEmbed()
+        .attachFile(attachment)
+        .setColor('RANDOM')
+    .setTitle('Random Anime Images')
+    .setDescription('Flags : `SFW`')
+        .setImage("attachment://catgirl.jpg")
+        .setTimestamp()
+
+    message.channel.send(embed).catch(err => message.channel.send(new Discord.MessageEmbed()
+      .setDescription(`\`\`\`diff\n- Error : ${err}\`\`\`\n${errorText}`))).catch(console.error);
     })
+
+})
   }
 }
