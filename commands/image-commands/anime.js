@@ -39,7 +39,7 @@ module.exports = {
     const attachment = new Discord.MessageAttachment(imageStream, "catgirl.jpg");
 
     let embed = new Discord.MessageEmbed()
-        .attachFile(attachment)
+        .attachFiles(attachment)
         .setColor('RANDOM')
     .setTitle('Random Anime Images')
     .setDescription('Flags : `SFW`')
