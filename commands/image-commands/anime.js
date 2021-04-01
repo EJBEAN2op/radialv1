@@ -1,3 +1,4 @@
+const request = require('request')
 const cheerio = require('cheerio');
 const fetch = require('node-fetch');
 const page = 'https://mashtoolz.xyz/api/catgirl';
