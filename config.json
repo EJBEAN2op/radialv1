@@ -1,4 +1,11 @@
 {
     "mongoPath": "mongodb+srv://radialbot:EpsP9psAC0ybratm@radial.rganw.mongodb.net/Radial?retryWrites=true&w=majority",
-    "serverID": "802857839488008203"
+    "serverID": "802857839488008203",
+    "discordinvite": "https://discord.gg/dBggm8KpsU",
+    "developer": "EJ BEAN#3961",
+    "version": "1.2.9",
+    "nonadminurl": "https://discord.com/oauth2/authorize?client_id=770365212704243784&scope=bot&permissions=330816",
+    "adminurl": "https://discord.com/oauth2/authorize?client_id=770365212704243784&scope=bot&permissions=8",
+    "errembed": "```diff\n- Unable to DM user```\nMake sure your DM's are opened , then try again",
+    "bounceemote": "<a:boing:815180305190223903>"
 }
