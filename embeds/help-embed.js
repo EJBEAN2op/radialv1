@@ -1,8 +1,9 @@
+const config = require('../config.json')
 var helpEmbed = {};
 module.exports = helpEmbed;
 const Discord = require('discord.js')
 
-const version = '1.1.0'
+
 const radialpfp = 'https://media.discordapp.net/attachments/813807565837303808/813810050732785695/sw.png'
 const botcolo2 = '#001aff'
 
@@ -19,7 +20,7 @@ const mainpage = helpEmbed.mainpage = new Discord.MessageEmbed({
         },
         {
             name: ':large_blue_diamond: Prefix of Radial : `!`',
-            value: `version : \`${version}\``
+            value: `version : \`${config.version}\``
         },
         {
             name: '\u200b',
@@ -59,7 +60,7 @@ const mainpage = helpEmbed.mainpage = new Discord.MessageEmbed({
     ],
     time: new Date(),
     footer: {
-        text: 'Developed by : EwasTaken#3961',
+        text: `Developed by : ${config.developer}`,
         iconURL: 'https://cdn.discordapp.com/attachments/793195039731482648/793533247967461416/ej1.png'
     }
 
@@ -86,7 +87,7 @@ const funcommands = helpEmbed.funcommands = new Discord.MessageEmbed({
         value: 'Syntax guide \n`[]` required parameters \n`()` optional parameters'
     }],
     footer: {
-        text: '| Developed by EwasTaken |',
+        text: `Developed by : ${config.developer}`,
         iconURL: 'https://cdn.discordapp.com/attachments/793195039731482648/793533247967461416/ej1.png'
     }
 })
@@ -126,7 +127,7 @@ const moderationcommands = helpEmbed.moderationcommands = new Discord.MessageEmb
         value: 'Syntax guide \n`[]` required parameters \n`()` optional parameters'
     }],
     footer: {
-        text: '| Developed by EwasTaken |',
+        text: `Developed by : ${config.developer}`,
         iconURL: 'https://cdn.discordapp.com/attachments/793195039731482648/793533247967461416/ej1.png'
     }
 })
@@ -157,7 +158,7 @@ const utilitycommands = helpEmbed.utilitycommands = new Discord.MessageEmbed({
 
     ],
     footer: {
-        text: '| Developed by EwasTaken |',
+        text: `Developed by : ${config.developer}`,
         iconURL: 'https://cdn.discordapp.com/attachments/793195039731482648/793533247967461416/ej1.png'
     }
 })
@@ -177,7 +178,7 @@ const imagecommands = helpEmbed.imagecommands = new Discord.MessageEmbed({
         },
     ],
     footer: {
-        text: '| Developed by EwasTaken |',
+        text: `Developed by : ${config.developer}`,
         iconURL: 'https://cdn.discordapp.com/attachments/793195039731482648/793533247967461416/ej1.png'
     }
 
@@ -196,7 +197,7 @@ const reactionmenu = helpEmbed.reactionmenu = new Discord.MessageEmbed({
         },
         {
             name: ':large_blue_diamond: Prefix of Radial : `!`',
-            value: `version : \`${version}\``
+            value: `version : \`${config.version}\``
         },
         {
             name: '\u200b',
@@ -213,7 +214,7 @@ const reactionmenu = helpEmbed.reactionmenu = new Discord.MessageEmbed({
     ],
     time: new Date(),
     footer: {
-        text: 'Developed by : EwasTaken#3961',
+        text: `Developed by : ${config.developer}`,
         iconURL: 'https://cdn.discordapp.com/attachments/793195039731482648/793533247967461416/ej1.png'
     }
 
