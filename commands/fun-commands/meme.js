@@ -1,59 +1,19 @@
+const { MessageEmbed } = require('discord.js');
 module.exports = {
     name: 'meme',
     cooldown: 10,
-    execute: async (message,args,Discord) => {
-        const https = require('https');
-const url = 'https://www.reddit.com/r/dankmemes/.json?limit=100'
-
-        https.get(url, (result) => {
-            var body = ''
-            result.on('data', (chunk) => {
-                body += chunk
-            })
-
-            result.on('end', () => {
-                var response = JSON.parse(body)
-                var index = response.data.children[Math.floor(Math.random() * 99) + 1].data
-
-                if (index.post_hint !== 'image') {
-
-                    var text = index.selftext
-                    const textembed = new Discord.MessageEmbed()
-                        .setTitle(subRedditName)
-                        .setColor(9384170)
-                        .setDescription(`[${title}](${link})\n\n${text}`)
-                        .setURL(`https://reddit.com/${subRedditName}`)
-
-                    message.channel.send(textembed).catch(console.error)
-                }
-
-                var image = index.preview.images[0].source.url.replace('&amp;', '&')
-                var title = index.title
-                var link = 'https://reddit.com' + index.permalink
-                var subRedditName = index.subreddit_name_prefixed
-
-                if (index.post_hint !== 'image') {
-                    const textembed = new Discord.RichEmbed()
-                        .setTitle(subRedditName)
-                        .setColor(9384170)
-                        .setDescription(`[${title}](${link})\n\n${text}`)
-                        .setURL(`https://reddit.com/${subRedditName}`)
-
-                    message.channel.send(textembed).catch(console.error)
-                }
-               // console.log(image);
-                const imageembed = new Discord.MessageEmbed()
-                    .setTitle(`${title}`)
-                    .setURL(`${link}`)
+    execute: async (message, args, Discord) => {
+        const got = require('got')
+        got('https://www.reddit.com/r/meme/random/.json').then(response => {
+            let content = JSON.parse(response.body),
+                image = content[0].data.children[0].data.url,
+                embed = new MessageEmbed()
                     .setImage(image)
-                    .setColor(9384170)
-                    //.setDescription(`[${title}](${link})`)
-                    .setURL(`https://reddit.com/${subRedditName}`)
-                message.channel.send(imageembed).catch(console.error)
-            }).on('error', function (e) {
-                console.log('Got an error: ', e)
-            })
+                    .setTimestamp()
+                    .setColor('RANDOM')
+                    .setDescription('Meme')
+                    .setFooter('from: reddit')
+            message.channel.send(embed).catch(console.error)
         })
-
     }
 }
