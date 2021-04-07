@@ -20,6 +20,7 @@
     "discord.js-reaction-menu": "^1.1.1",
     "dotenv": "^8.2.0",
     "ffmpeg-static": "^4.2.7",
+    "got": "^11.8.2",
     "keyv": "^4.0.3",
     "mal-scraper": "^2.11.3",
     "mangadex-full-api": "^4.3.1",
