@@ -89,11 +89,11 @@ bot.on('message', async (message) => {
 
                 if (!args[1]) return message.channel.send(new Discord.MessageEmbed()
                     .setColor('RED')
-                    .setDescription('**<:exclala:812387008365985804> Please provide a valid character as prefix!**'));
+                    .setDescription(`**${emotes.emotes.alert} Please provide a valid character as prefix!**`));
 
                 if (args.length > 2) return message.channel.send(new Discord.MessageEmbed()
                     .setColor('RED')
-                    .setDescription('**<:exclala:812387008365985804> Arguments cannot be more than 1**'));
+                    .setDescription(`**${emotes.emotes.alert} Arguments cannot be more than 1**`));
 
                 if (!message.member.hasPermission(['MANAGE_GUILD'])) return
                 const data = await welcomeSchema.findOne({
@@ -106,7 +106,7 @@ bot.on('message', async (message) => {
 
                 if (args[1].length > 1) return message.channel.send(new Discord.MessageEmbed()
                     .setColor('RED')
-                    .setDescription('**<:exclala:812387008365985804> Prefix cannot be longer than 1 character**'));
+                    .setDescription(`**${emotes.emotes.alert} Prefix cannot be longer than 1 character**`));
 
                 if (data) {
                     await welcomeSchema.findOneAndRemove({
@@ -116,7 +116,7 @@ bot.on('message', async (message) => {
 
 
                     message.channel.send(new Discord.MessageEmbed()
-                        .setDescription(`**<a:gears:811685880250368040> Successfully set server prefix to \`${guildprefix}\`**`)
+                        .setDescription(`**${emotes.emotes.check} Successfully set server prefix to \`${guildprefix}\`**`)
                         .setFooter(`If you ever forget the prefix , simply type prefix in the chat!`));
 
                     let newData = new welcomeSchema({
@@ -126,7 +126,7 @@ bot.on('message', async (message) => {
                     newData.save();
                 } else if (!data) {
                     message.channel.send(new Discord.MessageEmbed()
-                        .setDescription(`**<a:gears:811685880250368040> Successfully set server prefix to \`${guildprefix}\`**`)
+                        .setDescription(`**${emotes.emotes.check} Successfully set server prefix to \`${guildprefix}\`**`)
                         .setFooter(`If you ever forget the prefix , simply type prefix in the chat`));
 
                     let newData = new welcomeSchema({
@@ -181,7 +181,7 @@ bot.on('message', async (message) => {
         }
     } else {
         message.channel.send(new Discord.MessageEmbed()
-            .setDescription('```diff\n- The bot commands are disabled for maintenance , please try again later``` \nTrack bot status here => [Click Here](https://discord.gg/Md3bseUhde)')).catch(e => console.log(e))
+            .setDescription(`\`\`\`diff\n- The bot commands are disabled for maintenance , please try again later\`\`\` \n${emotes.emotes.tools} Track bot status here => [Click Here](https://discord.gg/Md3bseUhde)`)).catch(e => console.log(e))
         return;
     }
 })
