@@ -28,25 +28,47 @@ for (const folder of commandFolders) {
 
 bot.on('ready', async () => {
     module.exports.bot = bot;
-    logger.debug('index.js' , 'Logging in');
+    logger.debug('index.js', 'Logging in');
     logger.info('Read!');
-    
+    bot.user.setPresence({
+        activity: {
+            name: 'Shutting down | server error',
+            type: 'WATCHING'
+        },
+        status: 'dnd'
+    })
     bot.user.setActivity(`${bot.users.cache.size} users | ${bot.guilds.cache.size} servers`, {
         type: 'WATCHING'
     })
     await logger.init(bot);
-    process.on('unhandledRejection' , logger.unhandledError);
+    process.on('unhandledRejection', logger.unhandledError);
     console.log('bot is on ggs')
     mongoose.connect(mongoPath, {
         useNewUrlParser: true,
         useUnifiedTopology: true,
         useFindAndModify: false,
     }).then(() => {
+        logger.debug('connecting...', 'mongoDB')
         logger.info('connected to mongo!')
     })
     bot.channels.resolve('827305048048140318').send(new Discord.MessageEmbed()
         .setDescription(`\`\`\`diff\n+ Logged in as ${bot.user.username}\n- Version : ${core.version}\`\`\`\nDatabase: MongoDB\nstatus: connected <a:check:827647433445474314>`)
         .setTimestamp()).catch(console.error)
+    process.on('SIGTERM', () => {
+        bot.user.setPresence({
+            activity: {
+                name: 'SHUTTING DOWN',
+                type: 'WATCHING',
+            },
+            status: 'dnd',
+        }).then(() => {
+            logger.info('SHUT DOWN!');
+            process.exit(0);
+        }).catch(() => {
+            logger.info('SHUTTING DOWN WITHOUT PRESENCE!');
+            process.exit(0);
+        });
+    });
 })
 
 let maintanence = false;
@@ -89,7 +111,7 @@ bot.on('message', async (message) => {
             return message.channel.send(`${prefix}`)
         }
         if (!message.content.startsWith(prefix)) return;
-        
+
     }
 
     const sademotes = emotes.emotes.sademotes
