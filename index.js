@@ -32,10 +32,10 @@ bot.on('ready', async () => {
     logger.info('Ready!');
     bot.user.setPresence({
         activity: {
-            name: 'Shutting down | server error',
+            name: `${bot.users.cache.size} users | ${bot.guilds.cache.size} servers`,
             type: 'WATCHING'
         },
-        status: 'dnd'
+        status: 'idle'
     })
    /* bot.user.setActivity(`${bot.users.cache.size} users | ${bot.guilds.cache.size} servers`, {
         type: 'WATCHING'
