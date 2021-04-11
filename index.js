@@ -42,7 +42,7 @@ bot.on('ready', async () => {
         useUnifiedTopology: true,
         useFindAndModify: false,
     }).then(() => {
-        console.log('Connected to mongo')
+        logger.info('connected to mongo!')
     })
     bot.channels.resolve('827305048048140318').send(new Discord.MessageEmbed()
         .setDescription(`\`\`\`diff\n+ Logged in as ${bot.user.username}\n- Version : ${core.version}\`\`\`\nDatabase: MongoDB\nstatus: connected <a:check:827647433445474314>`)
