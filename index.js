@@ -37,9 +37,9 @@ bot.on('ready', async () => {
         },
         status: 'dnd'
     })
-    bot.user.setActivity(`${bot.users.cache.size} users | ${bot.guilds.cache.size} servers`, {
+   /* bot.user.setActivity(`${bot.users.cache.size} users | ${bot.guilds.cache.size} servers`, {
         type: 'WATCHING'
-    })
+    })*/
     await logger.init(bot);
     process.on('unhandledRejection', logger.unhandledError);
     console.log('bot is on ggs')
