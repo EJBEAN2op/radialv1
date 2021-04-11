@@ -50,9 +50,6 @@ bot.on('message', async message => {
         case 'maintenance':
             if (message.author.id !== '429493473259814923') return;
             if (!args[1]) return;
-            /*if(args[1] === 'off'){
-                maintanence = false
-            }*/
             if (args[1] === 'on') {
                 maintanence = true
             } else {
@@ -84,61 +81,8 @@ bot.on('message', async (message) => {
         if (cm === 'prefix') {
             return message.channel.send(`${prefix}`)
         }
-        if (message.content.startsWith(prefix)) {
-            if (commandName === 'setprefix') {
-
-                if (!args[1]) return message.channel.send(new Discord.MessageEmbed()
-                    .setColor('RED')
-                    .setDescription(`**${emotes.emotes.alert} Please provide a valid character as prefix!**`));
-
-                if (args.length > 2) return message.channel.send(new Discord.MessageEmbed()
-                    .setColor('RED')
-                    .setDescription(`**${emotes.emotes.alert} Arguments cannot be more than 1**`));
-
-                if (!message.member.hasPermission(['MANAGE_GUILD'])) return
-                const data = await welcomeSchema.findOne({
-                    GuildID: message.guild.id
-                });
-
-
-
-                const guildprefix = args[1]
-
-                if (args[1].length > 1) return message.channel.send(new Discord.MessageEmbed()
-                    .setColor('RED')
-                    .setDescription(`**${emotes.emotes.alert} Prefix cannot be longer than 1 character**`));
-
-                if (data) {
-                    await welcomeSchema.findOneAndRemove({
-                        GuildID: message.guild.id
-                    })
-
-
-
-                    message.channel.send(new Discord.MessageEmbed()
-                        .setDescription(`**${emotes.emotes.check} Successfully set server prefix to \`${guildprefix}\`**`)
-                        .setFooter(`If you ever forget the prefix , simply type prefix in the chat!`));
-
-                    let newData = new welcomeSchema({
-                        Prefix: guildprefix,
-                        GuildID: message.guild.id
-                    })
-                    newData.save();
-                } else if (!data) {
-                    message.channel.send(new Discord.MessageEmbed()
-                        .setDescription(`**${emotes.emotes.check} Successfully set server prefix to \`${guildprefix}\`**`)
-                        .setFooter(`If you ever forget the prefix , simply type prefix in the chat`));
-
-                    let newData = new welcomeSchema({
-                        Prefix: guildprefix,
-                        GuildID: message.guild.id
-                    })
-                    newData.save();
-                }
-            }
-        } else {
-            return;
-        }
+        if (!message.content.startsWith(prefix)) return;
+        
     }
 
     const sademotes = emotes.emotes.sademotes
