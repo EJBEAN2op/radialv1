@@ -1,4 +1,5 @@
 const Discord = require('discord.js');
+const logger = require('./scripts/logger');
 const PREFIX = '!';
 const bot = new Discord.Client({
     disableMentions: 'everyone'
@@ -26,9 +27,15 @@ for (const folder of commandFolders) {
 
 
 bot.on('ready', async () => {
+    module.exports.bot = bot;
+    logger.debug('index.js' , 'Logging in');
+    logger.info('Read!');
+    
     bot.user.setActivity(`${bot.users.cache.size} users | ${bot.guilds.cache.size} servers`, {
         type: 'WATCHING'
     })
+    await logger.init(bot);
+    process.on('unhandledRejection' , logger.unhandledError);
     console.log('bot is on ggs')
     mongoose.connect(mongoPath, {
         useNewUrlParser: true,
