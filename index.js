@@ -29,7 +29,7 @@ for (const folder of commandFolders) {
 bot.on('ready', async () => {
     module.exports.bot = bot;
     logger.debug('index.js', 'Logging in');
-    logger.info('Read!');
+    logger.info('Ready!');
     bot.user.setPresence({
         activity: {
             name: 'Shutting down | server error',
@@ -40,7 +40,7 @@ bot.on('ready', async () => {
    /* bot.user.setActivity(`${bot.users.cache.size} users | ${bot.guilds.cache.size} servers`, {
         type: 'WATCHING'
     })*/
-    //await logger.init(bot);
+    await logger.init(bot);
     process.on('unhandledRejection', logger.unhandledError);
     console.log('bot is on ggs')
     mongoose.connect(mongoPath, {
@@ -108,7 +108,7 @@ bot.on('message', async (message) => {
         const commandName = args[0].toLowerCase()
         const cm = message.content.toLowerCase();
         if (cm === 'prefix') {
-            return message.channel.send(`${prefix}`)
+            return message.channel.send(`The prefix for this server is: \`${prefix}\``)
         }
         if (!message.content.startsWith(prefix)) return;
 
@@ -149,6 +149,7 @@ bot.on('message', async (message) => {
     if (maintanence === false) {
         try {
             command.execute(message, args, Discord, bot, prefix)
+            //logger.debug(`recieved command : ${commandname}` , 'Initializing')
         } catch (error) {
             console.log(error);
         }
@@ -178,21 +179,16 @@ bot.on('message', async message => {
     }
 })
 
-bot.on('message', async message => {
-    if (message.channel.id === '804757450720542771') {
-        try {
-            await message.react('👍')
-            await message.react('👎')
-        } catch (e) {
-            console.log(e)
-        }
-    } else {
-        return;
-    }
 
 
-})
-
-
+const eventFiles = fs.readdirSync('./events').filter(file => file.endsWith('.js'));
+for (const file of eventFiles) {
+	const event = require(`./events/${file}`);
+	if (event.once) {
+		bot.once(event.name, (...args) => event.execute(...args));
+	} else {
+		bot.on(event.name, (...args) => event.execute(...args));
+	}
+}
 
 bot.login(process.env.TOKEN)
