@@ -27,8 +27,16 @@ module.exports = {
                     })
                         .then(async collected => {
                             await msg.delete()
-                            ps = await collected.first().content
+                            const p = await collected.first().content
                             //await array.push(collected.first().content)
+                            let newData = new passwordSchema({
+                                Password: p,
+                                userID: message.author.id
+                            })
+                            newData.save();
+                            message.channel.send(new MessageEmbed()
+                                .setColor('GREEN')
+                                .setTitle(`${emotes.emotes.check} Successfully signed in!`))
 
 
                         }).catch(() => {
@@ -37,18 +45,9 @@ module.exports = {
                                 .setDescription('```diff\n- Error : request timed out```'))
                             return;
                         })
-                    if (!ps) return;
 
 
-                    console.log(ps)
-                    let newData = new passwordSchema({
-                        Password: ps,
-                        userID: message.author.id
-                    })
-                    newData.save();
-                    message.channel.send(new MessageEmbed()
-                        .setColor('GREEN')
-                        .setTitle(`${emotes.emotes.check} Successfully signed in!`))
+                    
 
                 })
         }
