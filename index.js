@@ -37,9 +37,6 @@ bot.on('ready', async () => {
         },
         status: 'idle'
     })
-   /* bot.user.setActivity(`${bot.users.cache.size} users | ${bot.guilds.cache.size} servers`, {
-        type: 'WATCHING'
-    })*/
     await logger.init(bot);
     process.on('unhandledRejection', logger.unhandledError);
     console.log('bot is on ggs')
@@ -92,6 +89,9 @@ bot.on('message', async message => {
 
 let prefix;
 const welcomeSchema = require('./schemas/prefix-schema')
+let password;
+const passwordSchema = require('./schemas/account-schema')
+let signedInUser;
 
 
 bot.on('message', async (message) => {
@@ -114,6 +114,12 @@ bot.on('message', async (message) => {
 
     }
 
+    const passworddata = await passwordSchema.findOne({ userID: message.author.id })
+    if (passworddata) {
+        password = passworddata.Password
+        signedInUser = passworddata.userID
+    }
+
     const sademotes = emotes.emotes.sademotes
     const sademoteresult = Math.floor(Math.random() * 3)
 
@@ -134,13 +140,14 @@ bot.on('message', async (message) => {
     const now = Date.now();
     const timestamps = cooldowns.get(command.name);
     const cooldownAmount = (command.cooldown || 0) * 1000;
+    if (message.author.id !== signedInUser) {
+        if (timestamps.has(message.author.id)) {
+            const expirationTime = timestamps.get(message.author.id) + cooldownAmount;
 
-    if (timestamps.has(message.author.id)) {
-        const expirationTime = timestamps.get(message.author.id) + cooldownAmount;
-
-        if (now < expirationTime) {
-            const timeLeft = (expirationTime - now) / 1000;
-            return message.reply(`please wait ${timeLeft.toFixed(1)} more second(s) before reusing the \`${command.name}\` command. ${sademotes[sademoteresult]}`);
+            if (now < expirationTime) {
+                const timeLeft = (expirationTime - now) / 1000;
+                return message.reply(`please wait ${timeLeft.toFixed(1)} more second(s) before reusing the \`${command.name}\` command. ${sademotes[sademoteresult]}`);
+            }
         }
     }
 
@@ -148,7 +155,7 @@ bot.on('message', async (message) => {
     setTimeout(() => timestamps.delete(message.author.id), cooldownAmount);
     if (maintanence === false) {
         try {
-            command.execute(message, args, Discord, bot, prefix)
+            command.execute(message, args, Discord, bot, prefix, password, signedInUser)
             //logger.debug(`recieved command : ${commandname}` , 'Initializing')
         } catch (error) {
             console.log(error);
@@ -183,12 +190,12 @@ bot.on('message', async message => {
 
 const eventFiles = fs.readdirSync('./events').filter(file => file.endsWith('.js'));
 for (const file of eventFiles) {
-	const event = require(`./events/${file}`);
-	if (event.once) {
-		bot.once(event.name, (...args) => event.execute(...args));
-	} else {
-		bot.on(event.name, (...args) => event.execute(...args));
-	}
+    const event = require(`./events/${file}`);
+    if (event.once) {
+        bot.once(event.name, (...args) => event.execute(...args));
+    } else {
+        bot.on(event.name, (...args) => event.execute(...args));
+    }
 }
 
 bot.login(process.env.TOKEN)
