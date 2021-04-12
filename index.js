@@ -118,6 +118,9 @@ bot.on('message', async (message) => {
     if (passworddata) {
         password = passworddata.Password
         signedInUser = passworddata.userID
+    } else {
+        password = null;
+        signedInUser = null;
     }
 
     const sademotes = emotes.emotes.sademotes
@@ -140,7 +143,8 @@ bot.on('message', async (message) => {
     const now = Date.now();
     const timestamps = cooldowns.get(command.name);
     const cooldownAmount = (command.cooldown || 0) * 1000;
-    if (message.author.id !== passworddata.userID) {
+
+    if (message.author.id !== signedInUser) {
         if (timestamps.has(message.author.id)) {
             const expirationTime = timestamps.get(message.author.id) + cooldownAmount;
 
