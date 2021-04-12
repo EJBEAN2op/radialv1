@@ -3,6 +3,7 @@ module.exports = {
     name: 'messageDelete',
     execute: async (message) => {
         let content;
+        if (!message.guild) return;
         if (message.content) content = message.content
         else content = 'none'
         const logChannel = message.guild.channels.cache.find(ch => ch.name === 'radial-logs')
