@@ -6,7 +6,11 @@ const errorText = require('../../embeds/text')
 module.exports = {
   name: 'anime',
   aliases: ['waifu'],
-  execute: async (message, args, Discord) => {
+  cooldown: 30,
+  execute: async (message, args, Discord, bot, prefix, password, SIU) => {
+    let footer;
+    if (SIU) footer = 'Premium user perks : You do not have a cooldown'
+    else footer = 'Sign in now to get rid of this slowmode!'
     /*function getfromsite(resp) {
       fetch(page)
         .then(res => res.text()).catch(console.error)
@@ -35,21 +39,22 @@ module.exports = {
     request.get("https://mashtoolz.xyz/api/catgirl", { encoding: "base64" }, (err, res, body) => {
 
 
-    const imageStream = Buffer.from(body, "base64");
-    const attachment = new Discord.MessageAttachment(imageStream, "catgirl.jpg");
+      const imageStream = Buffer.from(body, "base64");
+      const attachment = new Discord.MessageAttachment(imageStream, "catgirl.jpg");
 
-    let embed = new Discord.MessageEmbed()
+      let embed = new Discord.MessageEmbed()
         .attachFiles(attachment)
         .setColor('RANDOM')
-    .setTitle('Random Anime Images')
-    .setDescription('Flags : `SFW`')
+        .setTitle('Random Anime Images')
+        .setDescription('Flags : `SFW`')
         .setImage("attachment://catgirl.jpg")
+        .setFooter(footer)
         .setTimestamp()
 
-    message.channel.send(embed).catch(err => message.channel.send(new Discord.MessageEmbed()
-      .setDescription(`\`\`\`diff\n- Error : ${err}\`\`\`\n${errorText}`))).catch(console.error);
+      message.channel.send(embed).catch(err => message.channel.send(new Discord.MessageEmbed()
+        .setDescription(`\`\`\`diff\n- Error : ${err}\`\`\`\n${errorText}`))).catch(console.error);
 
 
-})
+    })
   }
 }
