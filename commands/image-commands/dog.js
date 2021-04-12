@@ -5,7 +5,7 @@ module.exports = {
         if(!message.guild) return;
         if(args.length > 1) return;
         let footer;
-        if (SIU) footer = 'Premium user perks : You do not have a cooldown'
+        if (SIU === message.author.id) footer = 'Premium user perks : You do not have a cooldown'
         else footer = 'Sign in now to get rid of this slowmode!'
         const pets = require('pets.js')
         const animal = 'dog'

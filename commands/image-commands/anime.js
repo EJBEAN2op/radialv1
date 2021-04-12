@@ -9,7 +9,7 @@ module.exports = {
   cooldown: 30,
   execute: async (message, args, Discord, bot, prefix, password, SIU) => {
     let footer;
-    if (SIU) footer = 'Premium user perks : You do not have a cooldown'
+    if (SIU === message.author.id) footer = 'Premium user perks : You do not have a cooldown'
     else footer = 'Sign in now to get rid of this slowmode!'
     /*function getfromsite(resp) {
       fetch(page)
